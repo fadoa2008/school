@@ -67,9 +67,14 @@
       transition: all 0.3s ease;
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover:not(:disabled) {
       background-color: #d04848;
       transform: translateY(-2px);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .btn-secondary {
@@ -78,8 +83,13 @@
       transition: all 0.3s ease;
     }
 
-    .btn-secondary:hover {
+    .btn-secondary:hover:not(:disabled) {
       background-color: #ff9898;
+    }
+
+    .btn-secondary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .item-card {
@@ -108,6 +118,50 @@
       height: 3px;
       background: #FFB2B2;
       border-radius: 2px 2px 0 0;
+    }
+
+    .toast-message {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      animation: slideIn 0.3s ease;
+      max-width: 400px;
+    }
+
+    .toast-success {
+      background-color: #10b981;
+      color: white;
+    }
+
+    .toast-error {
+      background-color: #ef4444;
+      color: white;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideOut {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(400px);
+        opacity: 0;
+      }
     }
 
     @keyframes slowFloat {
@@ -151,45 +205,39 @@
   <style>body { box-sizing: border-box; }</style>
  </head>
  <body class="h-full bg-center" style="background-color: #FFFBF1;">
-  <div class="app-wrapper h-full w-full flex flex-col overflow-auto relative">
-   <!-- Animated Background Elements -->
-   <div class="fixed inset-0 -z-10 overflow-hidden" style="background-color: #FFFBF1;"><!-- Pen Group 1 -->
-    <svg class="absolute top-10 right-20 w-32 h-32 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M30,20 Q35,15 40,20 L45,50 Q40,55 35,50 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M50,10 Q55,5 60,10 L65,55 Q60,60 55,55 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M70,15 Q75,10 80,15 L85,52 Q80,57 75,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" />
+  <div class="app-wrapper h-full w-full flex flex-col overflow-auto relative"><!-- Animated Background Elements -->
+   <div class="fixed inset-0 -z-10 overflow-hidden" style="background-color: #FFFBF1;">
+    <!-- Pen Group 1 -->
+    <svg class="absolute top-10 right-20 w-32 h-32 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M30,20 Q35,15 40,20 L45,50 Q40,55 35,50 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M50,10 Q55,5 60,10 L65,55 Q60,60 55,55 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M70,15 Q75,10 80,15 L85,52 Q80,57 75,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" />
     </svg><!-- Pen Group 2 -->
-    <svg class="absolute bottom-20 left-32 w-40 h-40 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M25,30 Q30,25 35,30 L40,60 Q35,65 30,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M50,20 Q55,15 60,20 L65,65 Q60,70 55,65 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M75,35 Q80,30 85,35 L88,58 Q83,63 78,58 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" />
+    <svg class="absolute bottom-20 left-32 w-40 h-40 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M25,30 Q30,25 35,30 L40,60 Q35,65 30,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M50,20 Q55,15 60,20 L65,65 Q60,70 55,65 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M75,35 Q80,30 85,35 L88,58 Q83,63 78,58 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" />
     </svg><!-- Pen Group 3 -->
-    <svg class="absolute top-1/2 right-10 w-28 h-28 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M35,25 Q40,20 45,25 L48,55 Q43,60 38,55 Z" fill="#FFF2D0" stroke="#E36A6A" stroke-width="1" /> <path d="M60,18 Q65,13 70,18 L72,60 Q67,65 62,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
+    <svg class="absolute top-1/2 right-10 w-28 h-28 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M35,25 Q40,20 45,25 L48,55 Q43,60 38,55 Z" fill="#FFF2D0" stroke="#E36A6A" stroke-width="1" /> <path d="M60,18 Q65,13 70,18 L72,60 Q67,65 62,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
     </svg><!-- Pen Group 4 - Top Left -->
-    <svg class="absolute top-20 left-16 w-36 h-36 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M28,18 Q33,12 38,18 L42,52 Q38,58 33,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M52,12 Q57,6 62,12 L68,58 Q62,64 57,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M72,20 Q77,15 82,20 L86,55 Q81,60 76,55 Z" fill="#FFB2B2" stroke="#E36A6A" stroke-width="1" />
+    <svg class="absolute top-20 left-16 w-36 h-36 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M28,18 Q33,12 38,18 L42,52 Q38,58 33,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M52,12 Q57,6 62,12 L68,58 Q62,64 57,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M72,20 Q77,15 82,20 L86,55 Q81,60 76,55 Z" fill="#FFB2B2" stroke="#E36A6A" stroke-width="1" />
     </svg><!-- Pen Group 5 - Bottom Right -->
-    <svg class="absolute bottom-32 right-40 w-44 h-44 opacity-4 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M26,32 Q31,27 36,32 L40,62 Q36,68 31,62 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M48,22 Q53,17 58,22 L62,68 Q58,74 53,68 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M70,28 Q75,23 80,28 L84,60 Q80,66 75,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
+    <svg class="absolute bottom-32 right-40 w-44 h-44 opacity-4 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M26,32 Q31,27 36,32 L40,62 Q36,68 31,62 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M48,22 Q53,17 58,22 L62,68 Q58,74 53,68 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M70,28 Q75,23 80,28 L84,60 Q80,66 75,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
     </svg><!-- Pen Group 6 - Center -->
-    <svg class="absolute top-1/3 left-1/4 w-32 h-32 opacity-3 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M32,24 Q37,19 42,24 L46,54 Q42,60 37,54 Z" fill="#FFB2B2" stroke="#E36A6A" stroke-width="1" /> <path d="M54,14 Q59,9 64,14 L68,60 Q64,66 59,60 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" />
+    <svg class="absolute top-1/3 left-1/4 w-32 h-32 opacity-3 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M32,24 Q37,19 42,24 L46,54 Q42,60 37,54 Z" fill="#FFB2B2" stroke="#E36A6A" stroke-width="1" /> <path d="M54,14 Q59,9 64,14 L68,60 Q64,66 59,60 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" />
     </svg><!-- Pen Group 7 - Top Right -->
-    <svg class="absolute top-32 right-1/4 w-28 h-28 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M34,20 Q39,15 44,20 L48,52 Q44,58 39,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M60,16 Q65,11 70,16 L74,58 Q70,64 65,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
+    <svg class="absolute top-32 right-1/4 w-28 h-28 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M34,20 Q39,15 44,20 L48,52 Q44,58 39,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M60,16 Q65,11 70,16 L74,58 Q70,64 65,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
     </svg><!-- Pen Group 8 - Bottom Left -->
-    <svg class="absolute bottom-10 left-1/3 w-40 h-40 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M24,28 Q29,23 34,28 L38,58 Q34,64 29,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M46,18 Q51,13 56,18 L60,64 Q56,70 51,64 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M68,26 Q73,21 78,26 L82,56 Q78,62 73,56 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" />
+    <svg class="absolute bottom-10 left-1/3 w-40 h-40 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M24,28 Q29,23 34,28 L38,58 Q34,64 29,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M46,18 Q51,13 56,18 L60,64 Q56,70 51,64 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M68,26 Q73,21 78,26 L82,56 Q78,62 73,56 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" />
     </svg>
    </div><!-- Header -->
    <header class="gradient-primary text-white sticky top-0 z-50 shadow-lg">
     <div class="max-w-7xl mx-auto px-6 py-6">
      <div class="flex items-center justify-between mb-6">
-      <div class="flex items-center gap-4"><img src="phto.png" alt="شعار المدرسة" class="w-24 h-24 rounded-full shadow-lg border-4 border-white/30 object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='#E36A6A'; this.alt='شعار المدرسة';">
+      <div class="flex items-center gap-4">
+       <img src="phto.png" alt="شعار المدرسة" class="w-24 h-24 rounded-full shadow-lg border-4 border-white/30 object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='#E36A6A'; this.alt='شعار المدرسة';">
        <div>
         <h1 class="text-4xl font-bold">ثانوية خولة بنت الصامت</h1>
         <p class="text-blue-100 mt-1">منذ عام 1436</p>
        </div>
       </div><button id="toggleAuth" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition text-sm font-semibold flex items-center gap-2"> <i data-lucide="lock" style="width: 18px; height: 18px;"></i> <span id="authStatus">دخول المسؤولين</span> </button>
      </div><!-- Navigation Tabs -->
-     <div class="flex gap-8 overflow-x-auto pb-4"><button class="nav-tab active section-btn" data-section="about"> <span class="font-semibold">عن المدرسة</span> </button> <button class="nav-tab section-btn" data-section="activities"> <span class="font-semibold">الأنشطة</span> </button> <button class="nav-tab section-btn" data-section="broadcasts"> <span class="font-semibold">الإذاعات</span> </button> <button class="nav-tab section-btn" data-section="teams"> <span class="font-semibold">أقسام كوادر خولة</span> </button>
+     <div class="flex gap-8 overflow-x-auto pb-4">
+      <button class="nav-tab active section-btn" data-section="about"> <span class="font-semibold">عن المدرسة</span> </button> <button class="nav-tab section-btn" data-section="activities"> <span class="font-semibold">الأنشطة</span> </button> <button class="nav-tab section-btn" data-section="broadcasts"> <span class="font-semibold">الإذاعات</span> </button> <button class="nav-tab section-btn" data-section="teams"> <span class="font-semibold">أقسام كوادر خولة</span> </button>
      </div>
     </div>
    </header><!-- Auth Modal -->
@@ -202,21 +250,25 @@
      <div id="authError" class="text-red-500 text-sm mt-3 hidden"></div>
     </div>
    </div><!-- Main Content -->
-   <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8"><!-- About Section -->
+   <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8">
+    <!-- About Section -->
     <section id="about" class="section-smooth fade-in">
      <div class="gradient-accent rounded-2xl p-8 mb-8">
       <h2 class="text-3xl font-bold mb-4" style="color: #000000;">عن ثانوية خولة بنت الصامت</h2>
       <p class="text-lg leading-relaxed" style="color: #000000;">ثانوية خولة بنت الصامت هي إحدى المؤسسات التعليمية المتميزة التي افتتحت أبوابها عام 1436 هـ. تسعى المدرسة لتقديم تعليم عالي الجودة وتطوير شخصيات الطالبات بشكل متكامل. نركز على الأنشطة المدرسية والإذاعة الصباحية واكتشاف المواهب والمهارات لدى جميع الطالبات.</p>
      </div><!-- Strategic Framework Cards -->
-     <div class="grid md:grid-cols-2 gap-6 mb-8"><!-- Vision -->
+     <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <!-- Vision -->
       <div class="item-card p-6 rounded-lg shadow-md hover-lift border-r-4" style="border-right-color: #E36A6A;">
-       <div class="flex items-start gap-3 mb-3"><i data-lucide="eye" style="width: 28px; height: 28px; color: #E36A6A; flex-shrink: 0;"></i>
+       <div class="flex items-start gap-3 mb-3">
+        <i data-lucide="eye" style="width: 28px; height: 28px; color: #E36A6A; flex-shrink: 0;"></i>
         <h3 class="font-bold text-gray-900 text-lg">الرؤية</h3>
        </div>
        <p class="text-gray-700 leading-relaxed text-sm">تحقيق تعليم شامل للجميع يعزز القيم ويضعنا في صدارة المنافسة العالمية، ويُمكن الأفراد والمجتمعات من اكتساب مهارات ذات جودة عالية</p>
       </div><!-- Mission -->
       <div class="item-card p-6 rounded-lg shadow-md hover-lift border-r-4" style="border-right-color: #FFB2B2;">
-       <div class="flex items-start gap-3 mb-3"><i data-lucide="target" style="width: 28px; height: 28px; color: #FFB2B2; flex-shrink: 0;"></i>
+       <div class="flex items-start gap-3 mb-3">
+        <i data-lucide="target" style="width: 28px; height: 28px; color: #FFB2B2; flex-shrink: 0;"></i>
         <h3 class="font-bold text-gray-900 text-lg">الرسالة</h3>
        </div>
        <p class="text-gray-700 leading-relaxed text-sm">تقديم تعليم ذي جودة عالية بكوادر مؤهلة، معزز للقيم، متاح للجميع، ضمن بيئة آمنة ومحفزة لإعداد أفراد فاعلين في المجتمع</p>
@@ -224,7 +276,8 @@
      </div><!-- Values -->
      <div class="mb-8">
       <div class="bg-white rounded-xl p-6 shadow-md border-r-4" style="border-right-color: #FFF2D0;">
-       <div class="flex items-center gap-3 mb-4"><i data-lucide="heart" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+       <div class="flex items-center gap-3 mb-4">
+        <i data-lucide="heart" style="width: 28px; height: 28px; color: #E36A6A;"></i>
         <h3 class="font-bold text-gray-900 text-lg">قيمنا</h3>
        </div>
        <div class="grid md:grid-cols-5 gap-4">
@@ -258,53 +311,67 @@
      </div><!-- Strategic Goals -->
      <div class="mb-8">
       <div class="bg-white rounded-xl p-6 shadow-md border-r-4" style="border-right-color: #FFF2D0;">
-       <div class="flex items-center gap-3 mb-4"><i data-lucide="rocket" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+       <div class="flex items-center gap-3 mb-4">
+        <i data-lucide="rocket" style="width: 28px; height: 28px; color: #E36A6A;"></i>
         <h3 class="font-bold text-gray-900 text-lg">الأهداف الاستراتيجية</h3>
        </div>
        <div class="grid md:grid-cols-2 gap-3">
-        <div class="flex gap-3 items-start"><span class="text-black font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-black font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">ضمان وصول التعليم للجميع</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تطوير بيئة مدرسية آمنة وابتكارية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تعزيز القيم والهوية الوطنية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تحسين تجربة المستفيدين</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">الاستثمار في الطلاب والمدارس الأولى بالرعاية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تحسين أداء المدارس وتعزيز شراكتها</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">رفع كفاءة الإنفاق والاستدامة المالية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تطوير كفاءات الموارد البشرية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">الارتقاء بمستوى التجربة الرقمية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تعزيز الحوكمة والالتزام وإدارة المخاطر</p>
         </div>
        </div>
       </div>
      </div><!-- Core Values Cards -->
      <div class="grid md:grid-cols-3 gap-6">
-      <div class="item-card p-6 rounded-lg shadow-md hover-lift"><i data-lucide="book-open" style="width: 32px; height: 32px; color: #E36A6A; margin-bottom: 12px;"></i>
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift">
+       <i data-lucide="book-open" style="width: 32px; height: 32px; color: #E36A6A; margin-bottom: 12px;"></i>
        <h3 class="font-bold text-gray-900 mb-2">التميز الأكاديمي</h3>
        <p class="text-gray-600 text-sm">نهتم بتطوير المستوى الأكاديمي وتحقيق أعلى النتائج</p>
       </div>
-      <div class="item-card p-6 rounded-lg shadow-md hover-lift"><i data-lucide="users" style="width: 32px; height: 32px; color: #FFB2B2; margin-bottom: 12px;"></i>
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift">
+       <i data-lucide="users" style="width: 32px; height: 32px; color: #FFB2B2; margin-bottom: 12px;"></i>
        <h3 class="font-bold text-gray-900 mb-2">التنمية الشاملة</h3>
        <p class="text-gray-600 text-sm">تطوير المهارات والقيم لدى الطالبات بشكل شامل</p>
       </div>
-      <div class="item-card p-6 rounded-lg shadow-md hover-lift"><i data-lucide="star" style="width: 32px; height: 32px; color: #FFF2D0; margin-bottom: 12px;"></i>
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift">
+       <i data-lucide="star" style="width: 32px; height: 32px; color: #FFF2D0; margin-bottom: 12px;"></i>
        <h3 class="font-bold text-gray-900 mb-2">اكتشاف المواهب</h3>
        <p class="text-gray-600 text-sm">توفير فرص لاكتشاف وتطوير المواهب المختلفة</p>
       </div>
@@ -315,7 +382,8 @@
       <h2 class="text-3xl font-bold text-gray-900 mb-2">الأنشطة المدرسية</h2>
       <p class="text-gray-600">قائمة الأنشطة والفعاليات التي تم تنفيذها</p>
      </div>
-     <div id="adminActionsActivities" class="hidden mb-6 bg-blue-50 p-6 rounded-lg border-2 border-blue-200"><button id="addActivityBtn" class="btn-primary px-6 py-3 rounded-lg font-semibold flex items-center gap-2"> <i data-lucide="plus" style="width: 20px; height: 20px;"></i> إضافة نشاط جديد </button>
+     <div id="adminActionsActivities" class="hidden mb-6 bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
+      <button id="addActivityBtn" class="btn-primary px-6 py-3 rounded-lg font-semibold flex items-center gap-2"> <i data-lucide="plus" style="width: 20px; height: 20px;"></i> إضافة نشاط جديد </button>
      </div><!-- Add Activity Modal -->
      <div id="addActivityModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div class="bg-white rounded-2xl p-8 max-w-md w-full fade-in shadow-2xl">
@@ -325,7 +393,8 @@
       </div>
      </div>
      <div id="activitiesList" class="grid gap-4"></div>
-     <div id="activitiesEmpty" class="text-center py-12 text-gray-500"><i data-lucide="inbox" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.5;"></i>
+     <div id="activitiesEmpty" class="text-center py-12 text-gray-500">
+      <i data-lucide="inbox" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.5;"></i>
       <p>لا توجد أنشطة حالياً</p>
      </div>
     </section><!-- Broadcasts Section -->
@@ -334,7 +403,8 @@
       <h2 class="text-3xl font-bold text-gray-900 mb-2">الإذاعات المدرسية</h2>
       <p class="text-gray-600">الإذاعات الصباحية والفعاليات المميزة</p>
      </div>
-     <div id="adminActionsBroadcasts" class="hidden mb-6 bg-green-50 p-6 rounded-lg border-2 border-green-200"><button id="addBroadcastBtn" class="btn-secondary px-6 py-3 rounded-lg font-semibold flex items-center gap-2"> <i data-lucide="plus" style="width: 20px; height: 20px;"></i> إضافة إذاعة جديدة </button>
+     <div id="adminActionsBroadcasts" class="hidden mb-6 bg-green-50 p-6 rounded-lg border-2 border-green-200">
+      <button id="addBroadcastBtn" class="btn-secondary px-6 py-3 rounded-lg font-semibold flex items-center gap-2"> <i data-lucide="plus" style="width: 20px; height: 20px;"></i> إضافة إذاعة جديدة </button>
      </div><!-- Add Broadcast Modal -->
      <div id="addBroadcastModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div class="bg-white rounded-2xl p-8 max-w-md w-full fade-in shadow-2xl">
@@ -344,7 +414,8 @@
       </div>
      </div>
      <div id="broadcastsList" class="grid gap-4"></div>
-     <div id="broadcastsEmpty" class="text-center py-12 text-gray-500"><i data-lucide="radio" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.5;"></i>
+     <div id="broadcastsEmpty" class="text-center py-12 text-gray-500">
+      <i data-lucide="radio" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.5;"></i>
       <p>لا توجد إذاعات حالياً</p>
      </div>
     </section><!-- Teams Section -->
@@ -356,7 +427,8 @@
      <div class="grid md:grid-cols-2 gap-6">
       <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #E36A6A;">
        <div class="flex items-start gap-4">
-        <div class="p-3 rounded-lg" style="background-color: #E36A6A; opacity: 0.1;"><i data-lucide="activity" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+        <div class="p-3 rounded-lg" style="background-color: #E36A6A; opacity: 0.1;">
+         <i data-lucide="activity" style="width: 28px; height: 28px; color: #E36A6A;"></i>
         </div>
         <div class="flex-1">
          <h3 class="font-bold text-gray-900 text-lg mb-2">فريق الإرشاد الصحي</h3>
@@ -366,7 +438,8 @@
       </div>
       <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #FFB2B2;">
        <div class="flex items-start gap-4">
-        <div class="p-3 rounded-lg" style="background-color: #FFB2B2; opacity: 0.1;"><i data-lucide="compass" style="width: 28px; height: 28px; color: #FFB2B2;"></i>
+        <div class="p-3 rounded-lg" style="background-color: #FFB2B2; opacity: 0.1;">
+         <i data-lucide="compass" style="width: 28px; height: 28px; color: #FFB2B2;"></i>
         </div>
         <div class="flex-1">
          <h3 class="font-bold text-gray-900 text-lg mb-2">فريق الإرشاد الطلابي</h3>
@@ -376,7 +449,8 @@
       </div>
       <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #FFF2D0;">
        <div class="flex items-start gap-4">
-        <div class="p-3 rounded-lg" style="background-color: #FFF2D0; opacity: 0.1;"><i data-lucide="mic-2" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+        <div class="p-3 rounded-lg" style="background-color: #FFF2D0; opacity: 0.1;">
+         <i data-lucide="mic-2" style="width: 28px; height: 28px; color: #E36A6A;"></i>
         </div>
         <div class="flex-1">
          <h3 class="font-bold text-gray-900 text-lg mb-2">فريق الإذاعة المدرسية</h3>
@@ -386,7 +460,8 @@
       </div>
       <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #FFB2B2;">
        <div class="flex items-start gap-4">
-        <div class="p-3 rounded-lg" style="background-color: #FFB2B2; opacity: 0.3;"><i data-lucide="palette" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+        <div class="p-3 rounded-lg" style="background-color: #FFB2B2; opacity: 0.3;">
+         <i data-lucide="palette" style="width: 28px; height: 28px; color: #E36A6A;"></i>
         </div>
         <div class="flex-1">
          <h3 class="font-bold text-gray-900 text-lg mb-2">فريق موهبة الألوان</h3>
@@ -407,6 +482,27 @@
     const ADMIN_CODE = "MA_SH@admin.madrs";
     let isAdmin = false;
     let allData = [];
+
+    // Toast Message Functions
+    function showToast(message, type = 'success') {
+      const toast = document.createElement('div');
+      toast.className = `toast-message toast-${type}`;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    function showSuccessMessage(message) {
+      showToast(message, 'success');
+    }
+
+    function showErrorMessage(message) {
+      showToast(message, 'error');
+    }
 
     // Data Handler
     const dataHandler = {
@@ -447,6 +543,7 @@
         document.getElementById("authModal").classList.add("hidden");
         updateAdminVisibility();
         lucide.createIcons();
+        showSuccessMessage("تم دخول المسؤول بنجاح");
       } else {
         document.getElementById("authError").textContent = "الرمز غير صحيح";
         document.getElementById("authError").classList.remove("hidden");
@@ -504,9 +601,12 @@
       const link = document.getElementById("activityLink").value.trim();
 
       if (!title) {
-        alert("برجاء إدخال اسم النشاط");
+        showErrorMessage("برجاء إدخال اسم النشاط");
         return;
       }
+
+      document.getElementById("saveActivityBtn").disabled = true;
+      document.getElementById("saveActivityBtn").textContent = "جاري الحفظ...";
 
       const result = await window.dataSdk.create({
         id: Date.now().toString(),
@@ -520,7 +620,13 @@
       if (result.isOk) {
         document.getElementById("addActivityModal").classList.add("hidden");
         resetActivityForm();
+        showSuccessMessage("تم إضافة النشاط بنجاح ✓");
+      } else {
+        showErrorMessage("حدث خطأ في الحفظ، حاول مجدداً");
       }
+
+      document.getElementById("saveActivityBtn").disabled = false;
+      document.getElementById("saveActivityBtn").textContent = "حفظ";
     });
 
     function resetActivityForm() {
@@ -548,14 +654,17 @@
       const link = document.getElementById("broadcastLink").value.trim();
 
       if (!title) {
-        alert("برجاء إدخال اسم الإذاعة");
+        showErrorMessage("برجاء إدخال اسم الإذاعة");
         return;
       }
 
       if (!link) {
-        alert("برجاء إدخال رابط الإذاعة");
+        showErrorMessage("برجاء إدخال رابط الإذاعة");
         return;
       }
+
+      document.getElementById("saveBroadcastBtn").disabled = true;
+      document.getElementById("saveBroadcastBtn").textContent = "جاري الحفظ...";
 
       const result = await window.dataSdk.create({
         id: Date.now().toString(),
@@ -569,7 +678,13 @@
       if (result.isOk) {
         document.getElementById("addBroadcastModal").classList.add("hidden");
         resetBroadcastForm();
+        showSuccessMessage("تم إضافة الإذاعة بنجاح ✓");
+      } else {
+        showErrorMessage("حدث خطأ في الحفظ، حاول مجدداً");
       }
+
+      document.getElementById("saveBroadcastBtn").disabled = false;
+      document.getElementById("saveBroadcastBtn").textContent = "حفظ";
     });
 
     function resetBroadcastForm() {
@@ -649,16 +764,16 @@
       const item = allData.find(i => i.id === id);
       if (!item) return;
 
-      if (confirm("هل أنت متأكد من الحذف؟")) {
-        const result = await window.dataSdk.delete(item);
-        if (!result.isOk) {
-          alert("حدث خطأ في الحذف");
-        }
+      const result = await window.dataSdk.delete(item);
+      if (result.isOk) {
+        showSuccessMessage("تم الحذف بنجاح ✓");
+      } else {
+        showErrorMessage("حدث خطأ في الحذف");
       }
     }
 
     // Initialize
     lucide.createIcons();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f1cfb57d264f931',t:'MTc3NzExNjI3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f20094963a3f931',t:'MTc3NzE0ODMwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
