@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ثانوية خولة بنت الصامت</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    * {
+      direction: rtl;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Almarai:wght@400;700;800&family=HT+Baybars&display=swap');
+    
+    @font-face {
+      font-family: 'Harir';
+      src: url('https://fonts.googleapis.com/css2?family=Habibi&display=swap');
+    }
+    
+    body {
+      font-family: 'Almarai', 'Cairo', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'HT Baybars', 'Cairo', sans-serif;
+      font-weight: 700;
+    }
+
+    .gradient-primary {
+      background: linear-gradient(135deg, #E36A6A 0%, #FFB2B2 100%);
+    }
+
+    .gradient-accent {
+      background: linear-gradient(135deg, #FFF2D0 0%, #FFFBF1 100%);
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-smooth {
+      transition: all 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(40, 28, 89, 0.15);
+    }
+
+    .btn-primary {
+      background-color: #E36A6A;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #d04848;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: #FFB2B2;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: #ff9898;
+    }
+
+    .item-card {
+      background: white;
+      border-right: 4px solid #E36A6A;
+      transition: all 0.3s ease;
+    }
+
+    .item-card:hover {
+      box-shadow: 0 8px 16px rgba(227, 106, 106, 0.1);
+    }
+
+    .nav-tab {
+      position: relative;
+      padding-bottom: 8px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .nav-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: 3px;
+      background: #FFB2B2;
+      border-radius: 2px 2px 0 0;
+    }
+
+    @keyframes slowFloat {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      25% {
+        transform: translateY(-15px) translateX(5px);
+      }
+      50% {
+        transform: translateY(-30px) translateX(-5px);
+      }
+      75% {
+        transform: translateY(-15px) translateX(5px);
+      }
+    }
+
+    @keyframes slowFloatDelay {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      25% {
+        transform: translateY(-20px) translateX(-8px);
+      }
+      50% {
+        transform: translateY(-35px) translateX(8px);
+      }
+      75% {
+        transform: translateY(-20px) translateX(-8px);
+      }
+    }
+
+    .animate-slow-float {
+      animation: slowFloat 8s ease-in-out infinite;
+    }
+
+    .animate-slow-float-delay {
+      animation: slowFloatDelay 10s ease-in-out infinite;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full bg-center" style="background-color: #FFFBF1;">
+  <div class="app-wrapper h-full w-full flex flex-col overflow-auto relative">
+   <!-- Animated Background Elements -->
+   <div class="fixed inset-0 -z-10 overflow-hidden" style="background-color: #FFFBF1;"><!-- Pen Group 1 -->
+    <svg class="absolute top-10 right-20 w-32 h-32 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <path d="M30,20 Q35,15 40,20 L45,50 Q40,55 35,50 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M50,10 Q55,5 60,10 L65,55 Q60,60 55,55 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M70,15 Q75,10 80,15 L85,52 Q80,57 75,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" />
+    </svg><!-- Pen Group 2 -->
+    <svg class="absolute bottom-20 left-32 w-40 h-40 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <path d="M25,30 Q30,25 35,30 L40,60 Q35,65 30,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M50,20 Q55,15 60,20 L65,65 Q60,70 55,65 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M75,35 Q80,30 85,35 L88,58 Q83,63 78,58 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" />
+    </svg><!-- Pen Group 3 -->
+    <svg class="absolute top-1/2 right-10 w-28 h-28 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <path d="M35,25 Q40,20 45,25 L48,55 Q43,60 38,55 Z" fill="#FFF2D0" stroke="#E36A6A" stroke-width="1" /> <path d="M60,18 Q65,13 70,18 L72,60 Q67,65 62,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
+    </svg><!-- Pen Group 4 - Top Left -->
+    <svg class="absolute top-20 left-16 w-36 h-36 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <path d="M28,18 Q33,12 38,18 L42,52 Q38,58 33,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M52,12 Q57,6 62,12 L68,58 Q62,64 57,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M72,20 Q77,15 82,20 L86,55 Q81,60 76,55 Z" fill="#FFB2B2" stroke="#E36A6A" stroke-width="1" />
+    </svg><!-- Pen Group 5 - Bottom Right -->
+    <svg class="absolute bottom-32 right-40 w-44 h-44 opacity-4 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <path d="M26,32 Q31,27 36,32 L40,62 Q36,68 31,62 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M48,22 Q53,17 58,22 L62,68 Q58,74 53,68 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M70,28 Q75,23 80,28 L84,60 Q80,66 75,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
+    </svg><!-- Pen Group 6 - Center -->
+    <svg class="absolute top-1/3 left-1/4 w-32 h-32 opacity-3 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <path d="M32,24 Q37,19 42,24 L46,54 Q42,60 37,54 Z" fill="#FFB2B2" stroke="#E36A6A" stroke-width="1" /> <path d="M54,14 Q59,9 64,14 L68,60 Q64,66 59,60 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" />
+    </svg><!-- Pen Group 7 - Top Right -->
+    <svg class="absolute top-32 right-1/4 w-28 h-28 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <path d="M34,20 Q39,15 44,20 L48,52 Q44,58 39,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M60,16 Q65,11 70,16 L74,58 Q70,64 65,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
+    </svg><!-- Pen Group 8 - Bottom Left -->
+    <svg class="absolute bottom-10 left-1/3 w-40 h-40 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <path d="M24,28 Q29,23 34,28 L38,58 Q34,64 29,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M46,18 Q51,13 56,18 L60,64 Q56,70 51,64 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M68,26 Q73,21 78,26 L82,56 Q78,62 73,56 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" />
+    </svg>
+   </div><!-- Header -->
+   <header class="gradient-primary text-white sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 py-6">
+     <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center gap-4"><img src="phto.png" alt="شعار المدرسة" class="w-24 h-24 rounded-full shadow-lg border-4 border-white/30 object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='#E36A6A'; this.alt='شعار المدرسة';">
+       <div>
+        <h1 class="text-4xl font-bold">ثانوية خولة بنت الصامت</h1>
+        <p class="text-blue-100 mt-1">منذ عام 1436</p>
+       </div>
+      </div><button id="toggleAuth" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition text-sm font-semibold flex items-center gap-2"> <i data-lucide="lock" style="width: 18px; height: 18px;"></i> <span id="authStatus">دخول المسؤولين</span> </button>
+     </div><!-- Navigation Tabs -->
+     <div class="flex gap-8 overflow-x-auto pb-4"><button class="nav-tab active section-btn" data-section="about"> <span class="font-semibold">عن المدرسة</span> </button> <button class="nav-tab section-btn" data-section="activities"> <span class="font-semibold">الأنشطة</span> </button> <button class="nav-tab section-btn" data-section="broadcasts"> <span class="font-semibold">الإذاعات</span> </button> <button class="nav-tab section-btn" data-section="teams"> <span class="font-semibold">أقسام كوادر خولة</span> </button>
+     </div>
+    </div>
+   </header><!-- Auth Modal -->
+   <div id="authModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 fade-in shadow-2xl">
+     <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-900">دخول المسؤول</h2><button id="closeAuth" class="text-gray-500 hover:text-gray-700"> <i data-lucide="x" style="width: 24px; height: 24px;"></i> </button>
+     </div>
+     <p class="text-gray-600 mb-6 text-sm">أدخل الرمز لفتح خاصية الإضافة</p><input type="password" id="authCode" placeholder="أدخل الرمز" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-blue-500 text-right"> <button id="submitAuth" class="btn-primary w-full py-3 rounded-lg font-semibold">دخول</button>
+     <div id="authError" class="text-red-500 text-sm mt-3 hidden"></div>
+    </div>
+   </div><!-- Main Content -->
+   <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8"><!-- About Section -->
+    <section id="about" class="section-smooth fade-in">
+     <div class="gradient-accent rounded-2xl p-8 mb-8">
+      <h2 class="text-3xl font-bold mb-4" style="color: #000000;">عن ثانوية خولة بنت الصامت</h2>
+      <p class="text-lg leading-relaxed" style="color: #000000;">ثانوية خولة بنت الصامت هي إحدى المؤسسات التعليمية المتميزة التي افتتحت أبوابها عام 1436 هـ. تسعى المدرسة لتقديم تعليم عالي الجودة وتطوير شخصيات الطالبات بشكل متكامل. نركز على الأنشطة المدرسية والإذاعة الصباحية واكتشاف المواهب والمهارات لدى جميع الطالبات.</p>
+     </div><!-- Strategic Framework Cards -->
+     <div class="grid md:grid-cols-2 gap-6 mb-8"><!-- Vision -->
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift border-r-4" style="border-right-color: #E36A6A;">
+       <div class="flex items-start gap-3 mb-3"><i data-lucide="eye" style="width: 28px; height: 28px; color: #E36A6A; flex-shrink: 0;"></i>
+        <h3 class="font-bold text-gray-900 text-lg">الرؤية</h3>
+       </div>
+       <p class="text-gray-700 leading-relaxed text-sm">تحقيق تعليم شامل للجميع يعزز القيم ويضعنا في صدارة المنافسة العالمية، ويُمكن الأفراد والمجتمعات من اكتساب مهارات ذات جودة عالية</p>
+      </div><!-- Mission -->
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift border-r-4" style="border-right-color: #FFB2B2;">
+       <div class="flex items-start gap-3 mb-3"><i data-lucide="target" style="width: 28px; height: 28px; color: #FFB2B2; flex-shrink: 0;"></i>
+        <h3 class="font-bold text-gray-900 text-lg">الرسالة</h3>
+       </div>
+       <p class="text-gray-700 leading-relaxed text-sm">تقديم تعليم ذي جودة عالية بكوادر مؤهلة، معزز للقيم، متاح للجميع، ضمن بيئة آمنة ومحفزة لإعداد أفراد فاعلين في المجتمع</p>
+      </div>
+     </div><!-- Values -->
+     <div class="mb-8">
+      <div class="bg-white rounded-xl p-6 shadow-md border-r-4" style="border-right-color: #FFF2D0;">
+       <div class="flex items-center gap-3 mb-4"><i data-lucide="heart" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+        <h3 class="font-bold text-gray-900 text-lg">قيمنا</h3>
+       </div>
+       <div class="grid md:grid-cols-5 gap-4">
+        <div class="text-center">
+         <div class="text-sm font-semibold text-black">
+          الجودة
+         </div>
+        </div>
+        <div class="text-center">
+         <div class="text-sm font-semibold text-black">
+          الالتزام
+         </div>
+        </div>
+        <div class="text-center">
+         <div class="text-sm font-semibold text-black">
+          الإبداع
+         </div>
+        </div>
+        <div class="text-center">
+         <div class="text-sm font-semibold text-black">
+          روح الفريق
+         </div>
+        </div>
+        <div class="text-center">
+         <div class="text-sm font-semibold text-black">
+          التعلم المستمر
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Strategic Goals -->
+     <div class="mb-8">
+      <div class="bg-white rounded-xl p-6 shadow-md border-r-4" style="border-right-color: #FFF2D0;">
+       <div class="flex items-center gap-3 mb-4"><i data-lucide="rocket" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+        <h3 class="font-bold text-gray-900 text-lg">الأهداف الاستراتيجية</h3>
+       </div>
+       <div class="grid md:grid-cols-2 gap-3">
+        <div class="flex gap-3 items-start"><span class="text-black font-bold mt-0.5">•</span>
+         <p class="text-gray-700 text-sm">ضمان وصول التعليم للجميع</p>
+        </div>
+        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+         <p class="text-gray-700 text-sm">تطوير بيئة مدرسية آمنة وابتكارية</p>
+        </div>
+        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+         <p class="text-gray-700 text-sm">تعزيز القيم والهوية الوطنية</p>
+        </div>
+        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+         <p class="text-gray-700 text-sm">تحسين تجربة المستفيدين</p>
+        </div>
+        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+         <p class="text-gray-700 text-sm">الاستثمار في الطلاب والمدارس الأولى بالرعاية</p>
+        </div>
+        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+         <p class="text-gray-700 text-sm">تحسين أداء المدارس وتعزيز شراكتها</p>
+        </div>
+        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+         <p class="text-gray-700 text-sm">رفع كفاءة الإنفاق والاستدامة المالية</p>
+        </div>
+        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+         <p class="text-gray-700 text-sm">تطوير كفاءات الموارد البشرية</p>
+        </div>
+        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+         <p class="text-gray-700 text-sm">الارتقاء بمستوى التجربة الرقمية</p>
+        </div>
+        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+         <p class="text-gray-700 text-sm">تعزيز الحوكمة والالتزام وإدارة المخاطر</p>
+        </div>
+       </div>
+      </div>
+     </div><!-- Core Values Cards -->
+     <div class="grid md:grid-cols-3 gap-6">
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift"><i data-lucide="book-open" style="width: 32px; height: 32px; color: #E36A6A; margin-bottom: 12px;"></i>
+       <h3 class="font-bold text-gray-900 mb-2">التميز الأكاديمي</h3>
+       <p class="text-gray-600 text-sm">نهتم بتطوير المستوى الأكاديمي وتحقيق أعلى النتائج</p>
+      </div>
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift"><i data-lucide="users" style="width: 32px; height: 32px; color: #FFB2B2; margin-bottom: 12px;"></i>
+       <h3 class="font-bold text-gray-900 mb-2">التنمية الشاملة</h3>
+       <p class="text-gray-600 text-sm">تطوير المهارات والقيم لدى الطالبات بشكل شامل</p>
+      </div>
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift"><i data-lucide="star" style="width: 32px; height: 32px; color: #FFF2D0; margin-bottom: 12px;"></i>
+       <h3 class="font-bold text-gray-900 mb-2">اكتشاف المواهب</h3>
+       <p class="text-gray-600 text-sm">توفير فرص لاكتشاف وتطوير المواهب المختلفة</p>
+      </div>
+     </div>
+    </section><!-- Activities Section -->
+    <section id="activities" class="section-smooth hidden">
+     <div class="mb-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">الأنشطة المدرسية</h2>
+      <p class="text-gray-600">قائمة الأنشطة والفعاليات التي تم تنفيذها</p>
+     </div>
+     <div id="adminActionsActivities" class="hidden mb-6 bg-blue-50 p-6 rounded-lg border-2 border-blue-200"><button id="addActivityBtn" class="btn-primary px-6 py-3 rounded-lg font-semibold flex items-center gap-2"> <i data-lucide="plus" style="width: 20px; height: 20px;"></i> إضافة نشاط جديد </button>
+     </div><!-- Add Activity Modal -->
+     <div id="addActivityModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div class="bg-white rounded-2xl p-8 max-w-md w-full fade-in shadow-2xl">
+       <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-900">إضافة نشاط جديد</h2><button class="closeActivityModal text-gray-500 hover:text-gray-700"> <i data-lucide="x" style="width: 24px; height: 24px;"></i> </button>
+       </div><input type="text" id="activityTitle" placeholder="اسم النشاط" class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg mb-3 focus:outline-none focus:border-blue-500 text-right"> <textarea id="activityDesc" placeholder="وصف النشاط" class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg mb-3 focus:outline-none focus:border-blue-500 text-right" rows="3"></textarea> <input type="url" id="activityLink" placeholder="رابط الملف (اختياري)" class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-blue-500 text-right"> <button id="saveActivityBtn" class="btn-primary w-full py-3 rounded-lg font-semibold">حفظ</button>
+      </div>
+     </div>
+     <div id="activitiesList" class="grid gap-4"></div>
+     <div id="activitiesEmpty" class="text-center py-12 text-gray-500"><i data-lucide="inbox" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.5;"></i>
+      <p>لا توجد أنشطة حالياً</p>
+     </div>
+    </section><!-- Broadcasts Section -->
+    <section id="broadcasts" class="section-smooth hidden">
+     <div class="mb-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">الإذاعات المدرسية</h2>
+      <p class="text-gray-600">الإذاعات الصباحية والفعاليات المميزة</p>
+     </div>
+     <div id="adminActionsBroadcasts" class="hidden mb-6 bg-green-50 p-6 rounded-lg border-2 border-green-200"><button id="addBroadcastBtn" class="btn-secondary px-6 py-3 rounded-lg font-semibold flex items-center gap-2"> <i data-lucide="plus" style="width: 20px; height: 20px;"></i> إضافة إذاعة جديدة </button>
+     </div><!-- Add Broadcast Modal -->
+     <div id="addBroadcastModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div class="bg-white rounded-2xl p-8 max-w-md w-full fade-in shadow-2xl">
+       <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-900">إضافة إذاعة جديدة</h2><button class="closeBroadcastModal text-gray-500 hover:text-gray-700"> <i data-lucide="x" style="width: 24px; height: 24px;"></i> </button>
+       </div><input type="text" id="broadcastTitle" placeholder="اسم الإذاعة" class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg mb-3 focus:outline-none focus:border-blue-500 text-right"> <textarea id="broadcastDesc" placeholder="وصف الإذاعة" class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg mb-3 focus:outline-none focus:border-blue-500 text-right" rows="3"></textarea> <input type="url" id="broadcastLink" placeholder="رابط الإذاعة" class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-blue-500 text-right"> <button id="saveBroadcastBtn" class="btn-secondary w-full py-3 rounded-lg font-semibold">حفظ</button>
+      </div>
+     </div>
+     <div id="broadcastsList" class="grid gap-4"></div>
+     <div id="broadcastsEmpty" class="text-center py-12 text-gray-500"><i data-lucide="radio" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.5;"></i>
+      <p>لا توجد إذاعات حالياً</p>
+     </div>
+    </section><!-- Teams Section -->
+    <section id="teams" class="section-smooth hidden">
+     <div class="mb-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">أقسام كوادر خولة</h2>
+      <p class="text-gray-600">الفرق والأقسام الرئيسية في المدرسة</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-6">
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #E36A6A;">
+       <div class="flex items-start gap-4">
+        <div class="p-3 rounded-lg" style="background-color: #E36A6A; opacity: 0.1;"><i data-lucide="activity" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+        </div>
+        <div class="flex-1">
+         <h3 class="font-bold text-gray-900 text-lg mb-2">فريق الإرشاد الصحي</h3>
+         <p class="text-gray-600 text-sm">يهتم بنشر الوعي الصحي وتعزيز السلوكيات الصحية السليمة بين الطالبات</p>
+        </div>
+       </div>
+      </div>
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #FFB2B2;">
+       <div class="flex items-start gap-4">
+        <div class="p-3 rounded-lg" style="background-color: #FFB2B2; opacity: 0.1;"><i data-lucide="compass" style="width: 28px; height: 28px; color: #FFB2B2;"></i>
+        </div>
+        <div class="flex-1">
+         <h3 class="font-bold text-gray-900 text-lg mb-2">فريق الإرشاد الطلابي</h3>
+         <p class="text-gray-600 text-sm">يقدم الدعم والإرشاد النفسي والتربوي لجميع الطالبات</p>
+        </div>
+       </div>
+      </div>
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #FFF2D0;">
+       <div class="flex items-start gap-4">
+        <div class="p-3 rounded-lg" style="background-color: #FFF2D0; opacity: 0.1;"><i data-lucide="mic-2" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+        </div>
+        <div class="flex-1">
+         <h3 class="font-bold text-gray-900 text-lg mb-2">فريق الإذاعة المدرسية</h3>
+         <p class="text-gray-600 text-sm">ينتج الإذاعات الصباحية المتنوعة والفعاليات الإعلامية</p>
+        </div>
+       </div>
+      </div>
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #FFB2B2;">
+       <div class="flex items-start gap-4">
+        <div class="p-3 rounded-lg" style="background-color: #FFB2B2; opacity: 0.3;"><i data-lucide="palette" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+        </div>
+        <div class="flex-1">
+         <h3 class="font-bold text-gray-900 text-lg mb-2">فريق موهبة الألوان</h3>
+         <p class="text-gray-600 text-sm">يركز على اكتشاف وتطوير المواهب الفنية والإبداعية</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </main><!-- Footer -->
+   <footer class="gradient-primary text-white mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+     <p class="text-blue-100">© 2024 ثانوية خولة بنت الصامت | جميع الحقوق محفوظة</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const ADMIN_CODE = "MA_SH@admin.madrs";
+    let isAdmin = false;
+    let allData = [];
+
+    // Data Handler
+    const dataHandler = {
+      onDataChanged(data) {
+        allData = data;
+        renderAllItems();
+      }
+    };
+
+    // Initialize Data SDK
+    async function initializeDataSdk() {
+      const result = await window.dataSdk.init(dataHandler);
+      if (!result.isOk) {
+        console.error("Failed to initialize Data SDK");
+      }
+    }
+
+    initializeDataSdk();
+
+    // Auth Functions
+    document.getElementById("toggleAuth").addEventListener("click", () => {
+      document.getElementById("authModal").classList.remove("hidden");
+      document.getElementById("authCode").focus();
+    });
+
+    document.getElementById("closeAuth").addEventListener("click", () => {
+      document.getElementById("authModal").classList.add("hidden");
+      document.getElementById("authCode").value = "";
+      document.getElementById("authError").classList.add("hidden");
+    });
+
+    document.getElementById("submitAuth").addEventListener("click", () => {
+      const code = document.getElementById("authCode").value.trim();
+      if (code === ADMIN_CODE) {
+        isAdmin = true;
+        document.getElementById("authStatus").textContent = "مسؤول ✓";
+        document.getElementById("toggleAuth").style.backgroundColor = "#10b981";
+        document.getElementById("authModal").classList.add("hidden");
+        updateAdminVisibility();
+        lucide.createIcons();
+      } else {
+        document.getElementById("authError").textContent = "الرمز غير صحيح";
+        document.getElementById("authError").classList.remove("hidden");
+      }
+    });
+
+    document.getElementById("authCode").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        document.getElementById("submitAuth").click();
+      }
+    });
+
+    function updateAdminVisibility() {
+      const adminActivities = document.getElementById("adminActionsActivities");
+      const adminBroadcasts = document.getElementById("adminActionsBroadcasts");
+      if (isAdmin) {
+        adminActivities.classList.remove("hidden");
+        adminBroadcasts.classList.remove("hidden");
+      } else {
+        adminActivities.classList.add("hidden");
+        adminBroadcasts.classList.add("hidden");
+      }
+    }
+
+    // Navigation
+    document.querySelectorAll(".section-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".section-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        
+        document.querySelectorAll("main > section").forEach(s => s.classList.add("hidden"));
+        const section = document.getElementById(btn.dataset.section);
+        section.classList.remove("hidden");
+        section.classList.add("fade-in");
+        lucide.createIcons();
+      });
+    });
+
+    // Activities
+    document.getElementById("addActivityBtn").addEventListener("click", () => {
+      document.getElementById("addActivityModal").classList.remove("hidden");
+      document.getElementById("activityTitle").focus();
+    });
+
+    document.querySelectorAll(".closeActivityModal").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.getElementById("addActivityModal").classList.add("hidden");
+        resetActivityForm();
+      });
+    });
+
+    document.getElementById("saveActivityBtn").addEventListener("click", async () => {
+      const title = document.getElementById("activityTitle").value.trim();
+      const desc = document.getElementById("activityDesc").value.trim();
+      const link = document.getElementById("activityLink").value.trim();
+
+      if (!title) {
+        alert("برجاء إدخال اسم النشاط");
+        return;
+      }
+
+      const result = await window.dataSdk.create({
+        id: Date.now().toString(),
+        type: "activity",
+        title,
+        description: desc,
+        broadcastLink: link,
+        createdAt: new Date().toISOString()
+      });
+
+      if (result.isOk) {
+        document.getElementById("addActivityModal").classList.add("hidden");
+        resetActivityForm();
+      }
+    });
+
+    function resetActivityForm() {
+      document.getElementById("activityTitle").value = "";
+      document.getElementById("activityDesc").value = "";
+      document.getElementById("activityLink").value = "";
+    }
+
+    // Broadcasts
+    document.getElementById("addBroadcastBtn").addEventListener("click", () => {
+      document.getElementById("addBroadcastModal").classList.remove("hidden");
+      document.getElementById("broadcastTitle").focus();
+    });
+
+    document.querySelectorAll(".closeBroadcastModal").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.getElementById("addBroadcastModal").classList.add("hidden");
+        resetBroadcastForm();
+      });
+    });
+
+    document.getElementById("saveBroadcastBtn").addEventListener("click", async () => {
+      const title = document.getElementById("broadcastTitle").value.trim();
+      const desc = document.getElementById("broadcastDesc").value.trim();
+      const link = document.getElementById("broadcastLink").value.trim();
+
+      if (!title) {
+        alert("برجاء إدخال اسم الإذاعة");
+        return;
+      }
+
+      if (!link) {
+        alert("برجاء إدخال رابط الإذاعة");
+        return;
+      }
+
+      const result = await window.dataSdk.create({
+        id: Date.now().toString(),
+        type: "broadcast",
+        title,
+        description: desc,
+        broadcastLink: link,
+        createdAt: new Date().toISOString()
+      });
+
+      if (result.isOk) {
+        document.getElementById("addBroadcastModal").classList.add("hidden");
+        resetBroadcastForm();
+      }
+    });
+
+    function resetBroadcastForm() {
+      document.getElementById("broadcastTitle").value = "";
+      document.getElementById("broadcastDesc").value = "";
+      document.getElementById("broadcastLink").value = "";
+    }
+
+    // Render Functions
+    function renderAllItems() {
+      const activities = allData.filter(item => item.type === "activity");
+      const broadcasts = allData.filter(item => item.type === "broadcast");
+
+      renderActivities(activities);
+      renderBroadcasts(broadcasts);
+    }
+
+    function renderActivities(activities) {
+      const list = document.getElementById("activitiesList");
+      const empty = document.getElementById("activitiesEmpty");
+
+      if (activities.length === 0) {
+        list.innerHTML = "";
+        empty.classList.remove("hidden");
+        return;
+      }
+
+      empty.classList.add("hidden");
+      list.innerHTML = activities.map(activity => `
+        <div class="item-card p-6 rounded-lg shadow-md hover-lift">
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">${activity.title}</h3>
+          <p class="text-gray-600 mb-4 text-sm">${activity.description}</p>
+          ${activity.broadcastLink ? `
+            <a href="${activity.broadcastLink}" target="_blank" rel="noopener noreferrer" class="inline-block btn-primary px-4 py-2 rounded-lg text-white font-semibold hover:opacity-90 transition">
+              اطلع على النشاط
+            </a>
+          ` : ''}
+          ${isAdmin ? `
+            <button onclick="deleteItem('${activity.id}')" class="inline-block mr-2 px-4 py-2 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition">
+              حذف
+            </button>
+          ` : ''}
+        </div>
+      `).join("");
+      lucide.createIcons();
+    }
+
+    function renderBroadcasts(broadcasts) {
+      const list = document.getElementById("broadcastsList");
+      const empty = document.getElementById("broadcastsEmpty");
+
+      if (broadcasts.length === 0) {
+        list.innerHTML = "";
+        empty.classList.remove("hidden");
+        return;
+      }
+
+      empty.classList.add("hidden");
+      list.innerHTML = broadcasts.map(broadcast => `
+        <div class="item-card p-6 rounded-lg shadow-md hover-lift">
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">${broadcast.title}</h3>
+          <p class="text-gray-600 mb-4 text-sm">${broadcast.description}</p>
+          <a href="${broadcast.broadcastLink}" target="_blank" rel="noopener noreferrer" class="inline-block btn-secondary px-4 py-2 rounded-lg text-white font-semibold hover:opacity-90 transition">
+            اطلع على الإذاعة
+          </a>
+          ${isAdmin ? `
+            <button onclick="deleteItem('${broadcast.id}')" class="inline-block mr-2 px-4 py-2 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition">
+              حذف
+            </button>
+          ` : ''}
+        </div>
+      `).join("");
+      lucide.createIcons();
+    }
+
+    async function deleteItem(id) {
+      const item = allData.find(i => i.id === id);
+      if (!item) return;
+
+      if (confirm("هل أنت متأكد من الحذف؟")) {
+        const result = await window.dataSdk.delete(item);
+        if (!result.isOk) {
+          alert("حدث خطأ في الحذف");
+        }
+      }
+    }
+
+    // Initialize
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f1cfb57d264f931',t:'MTc3NzExNjI3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
