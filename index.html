@@ -608,25 +608,28 @@
       document.getElementById("saveActivityBtn").disabled = true;
       document.getElementById("saveActivityBtn").textContent = "جاري الحفظ...";
 
-      const result = await window.dataSdk.create({
-        id: Date.now().toString(),
-        type: "activity",
-        title,
-        description: desc,
-        broadcastLink: link,
-        createdAt: new Date().toISOString()
-      });
+      try {
+        const result = await window.dataSdk.create({
+          type: "activity",
+          title,
+          description: desc,
+          activity_link: link,
+          createdAt: new Date().toISOString()
+        });
 
-      if (result.isOk) {
-        document.getElementById("addActivityModal").classList.add("hidden");
-        resetActivityForm();
-        showSuccessMessage("تم إضافة النشاط بنجاح ✓");
-      } else {
+        if (result.isOk) {
+          document.getElementById("addActivityModal").classList.add("hidden");
+          resetActivityForm();
+          showSuccessMessage("تم إضافة النشاط بنجاح ✓");
+        } else {
+          showErrorMessage("حدث خطأ في الحفظ، حاول مجدداً");
+        }
+      } catch (error) {
         showErrorMessage("حدث خطأ في الحفظ، حاول مجدداً");
+      } finally {
+        document.getElementById("saveActivityBtn").disabled = false;
+        document.getElementById("saveActivityBtn").textContent = "حفظ";
       }
-
-      document.getElementById("saveActivityBtn").disabled = false;
-      document.getElementById("saveActivityBtn").textContent = "حفظ";
     });
 
     function resetActivityForm() {
@@ -666,25 +669,28 @@
       document.getElementById("saveBroadcastBtn").disabled = true;
       document.getElementById("saveBroadcastBtn").textContent = "جاري الحفظ...";
 
-      const result = await window.dataSdk.create({
-        id: Date.now().toString(),
-        type: "broadcast",
-        title,
-        description: desc,
-        broadcastLink: link,
-        createdAt: new Date().toISOString()
-      });
+      try {
+        const result = await window.dataSdk.create({
+          title,
+          description: desc,
+          broadcast_link: link,
+          type: "broadcast",
+          createdAt: new Date().toISOString()
+        });
 
-      if (result.isOk) {
-        document.getElementById("addBroadcastModal").classList.add("hidden");
-        resetBroadcastForm();
-        showSuccessMessage("تم إضافة الإذاعة بنجاح ✓");
-      } else {
-        showErrorMessage("حدث خطأ في الحفظ، حاول مجدداً");
+        if (result.isOk) {
+          document.getElementById("addBroadcastModal").classList.add("hidden");
+          resetBroadcastForm();
+          showSuccessMessage("تم إضافة الإذاعة بنجاح ✓");
+        } else {
+          showErrorMessage("حدث خطأ في الحفظ");
+        }
+      } catch (error) {
+        showErrorMessage("حدث خطأ في الحفظ");
+      } finally {
+        document.getElementById("saveBroadcastBtn").disabled = false;
+        document.getElementById("saveBroadcastBtn").textContent = "حفظ";
       }
-
-      document.getElementById("saveBroadcastBtn").disabled = false;
-      document.getElementById("saveBroadcastBtn").textContent = "حفظ";
     });
 
     function resetBroadcastForm() {
@@ -717,13 +723,13 @@
         <div class="item-card p-6 rounded-lg shadow-md hover-lift">
           <h3 class="font-bold text-gray-900 mb-2 text-lg">${activity.title}</h3>
           <p class="text-gray-600 mb-4 text-sm">${activity.description}</p>
-          ${activity.broadcastLink ? `
-            <a href="${activity.broadcastLink}" target="_blank" rel="noopener noreferrer" class="inline-block btn-primary px-4 py-2 rounded-lg text-white font-semibold hover:opacity-90 transition">
+          ${activity.activity_link ? `
+            <a href="${activity.activity_link}" target="_blank" rel="noopener noreferrer" class="inline-block btn-primary px-4 py-2 rounded-lg text-white font-semibold hover:opacity-90 transition">
               اطلع على النشاط
             </a>
           ` : ''}
           ${isAdmin ? `
-            <button onclick="deleteItem('${activity.id}')" class="inline-block mr-2 px-4 py-2 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition">
+            <button onclick="deleteItem('${activity.__backendId}')" class="inline-block mr-2 px-4 py-2 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition">
               حذف
             </button>
           ` : ''}
@@ -745,13 +751,13 @@
       empty.classList.add("hidden");
       list.innerHTML = broadcasts.map(broadcast => `
         <div class="item-card p-6 rounded-lg shadow-md hover-lift">
-          <h3 class="font-bold text-gray-900 mb-2 text-lg">${broadcast.title}</h3>
-          <p class="text-gray-600 mb-4 text-sm">${broadcast.description}</p>
-          <a href="${broadcast.broadcastLink}" target="_blank" rel="noopener noreferrer" class="inline-block btn-secondary px-4 py-2 rounded-lg text-white font-semibold hover:opacity-90 transition">
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">${broadcast.title || 'بدون عنوان'}</h3>
+          <p class="text-gray-600 mb-4 text-sm">${broadcast.description || 'بدون وصف'}</p>
+          <a href="${broadcast.broadcast_link}" target="_blank" rel="noopener noreferrer" class="inline-block btn-secondary px-4 py-2 rounded-lg text-white font-semibold hover:opacity-90 transition">
             اطلع على الإذاعة
           </a>
           ${isAdmin ? `
-            <button onclick="deleteItem('${broadcast.id}')" class="inline-block mr-2 px-4 py-2 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition">
+            <button onclick="deleteItem('${broadcast.__backendId}')" class="inline-block mr-2 px-4 py-2 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition">
               حذف
             </button>
           ` : ''}
@@ -761,7 +767,7 @@
     }
 
     async function deleteItem(id) {
-      const item = allData.find(i => i.id === id);
+      const item = allData.find(i => i.__backendId === id);
       if (!item) return;
 
       const result = await window.dataSdk.delete(item);
@@ -775,5 +781,5 @@
     // Initialize
     lucide.createIcons();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f20094963a3f931',t:'MTc3NzE0ODMwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f2021a90750f931',t:'MTc3NzE0OTI5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
