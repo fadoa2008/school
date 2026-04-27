@@ -25,25 +25,84 @@
     }
 
     .gradient-primary {
-      background: linear-gradient(135deg, #E36A6A 0%, #FFB2B2 100%);
+      background: linear-gradient(135deg, #E36A6A 0%, #FF7F7F 50%, #FFB2B2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gradient-primary::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(50px, 50px) rotate(45deg);
+      }
     }
 
     .gradient-accent {
       background: linear-gradient(135deg, #FFF2D0 0%, #FFFBF1 100%);
+      position: relative;
     }
 
     .fade-in {
-      animation: fadeIn 0.6s ease-in;
+      animation: fadeIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(20px) scale(0.95);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-180deg);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
 
@@ -52,19 +111,41 @@
     }
 
     .hover-lift:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(40, 28, 89, 0.15);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(227, 106, 106, 0.25);
+    }
+
+    .hover-lift {
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .btn-primary {
       background-color: #E36A6A;
       color: white;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.2);
+      transition: right 0.4s ease;
+    }
+
+    .btn-primary:hover::before:not(:disabled) {
+      right: -100%;
     }
 
     .btn-primary:hover:not(:disabled) {
       background-color: #d04848;
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(227, 106, 106, 0.3);
     }
 
     .btn-primary:disabled {
@@ -75,11 +156,30 @@
     .btn-secondary {
       background-color: #FFB2B2;
       color: white;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-secondary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.2);
+      transition: right 0.4s ease;
+    }
+
+    .btn-secondary:hover::before:not(:disabled) {
+      right: -100%;
     }
 
     .btn-secondary:hover:not(:disabled) {
       background-color: #ff9898;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(255, 178, 178, 0.3);
     }
 
     .btn-secondary:disabled {
@@ -90,18 +190,47 @@
     .item-card {
       background: white;
       border-right: 4px solid #E36A6A;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .item-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(227, 106, 106, 0.1));
+      transition: width 0.5s ease;
     }
 
     .item-card:hover {
-      box-shadow: 0 8px 16px rgba(227, 106, 106, 0.1);
+      box-shadow: 0 15px 35px rgba(227, 106, 106, 0.2);
+      transform: translateY(-6px);
+    }
+
+    .item-card:hover::before {
+      width: 100%;
     }
 
     .nav-tab {
       position: relative;
       padding-bottom: 8px;
       cursor: pointer;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-tab:hover {
+      color: #E36A6A;
+      transform: scale(1.05);
+    }
+
+    .nav-tab.active {
+      color: #E36A6A;
     }
 
     .nav-tab.active::after {
@@ -111,8 +240,20 @@
       right: 0;
       left: 0;
       height: 3px;
-      background: #FFB2B2;
+      background: linear-gradient(90deg, #FFB2B2, #E36A6A, #FFB2B2);
       border-radius: 2px 2px 0 0;
+      animation: expandWidth 0.4s ease;
+    }
+
+    @keyframes expandWidth {
+      from {
+        width: 0;
+        right: 50%;
+      }
+      to {
+        width: 100%;
+        right: 0;
+      }
     }
 
     .toast-message {
@@ -120,72 +261,75 @@
       top: 20px;
       right: 20px;
       padding: 16px 24px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
       z-index: 1000;
-      animation: slideIn 0.3s ease;
+      animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       max-width: 400px;
+      border-right: 4px solid;
     }
 
     .toast-success {
       background-color: #10b981;
       color: white;
+      border-right-color: #059669;
     }
 
     .toast-error {
       background-color: #ef4444;
       color: white;
+      border-right-color: #dc2626;
     }
 
     @keyframes slideIn {
       from {
-        transform: translateX(400px);
+        transform: translateX(500px) rotate(10deg);
         opacity: 0;
       }
       to {
-        transform: translateX(0);
+        transform: translateX(0) rotate(0deg);
         opacity: 1;
       }
     }
 
     @keyframes slideOut {
       from {
-        transform: translateX(0);
+        transform: translateX(0) rotate(0deg);
         opacity: 1;
       }
       to {
-        transform: translateX(400px);
+        transform: translateX(500px) rotate(10deg);
         opacity: 0;
       }
     }
 
     @keyframes slowFloat {
       0%, 100% {
-        transform: translateY(0px) translateX(0px);
+        transform: translateY(0px) translateX(0px) rotate(0deg);
       }
       25% {
-        transform: translateY(-15px) translateX(5px);
+        transform: translateY(-15px) translateX(5px) rotate(5deg);
       }
       50% {
-        transform: translateY(-30px) translateX(-5px);
+        transform: translateY(-30px) translateX(-5px) rotate(-5deg);
       }
       75% {
-        transform: translateY(-15px) translateX(5px);
+        transform: translateY(-15px) translateX(5px) rotate(5deg);
       }
     }
 
     @keyframes slowFloatDelay {
       0%, 100% {
-        transform: translateY(0px) translateX(0px);
+        transform: translateY(0px) translateX(0px) rotate(0deg);
       }
       25% {
-        transform: translateY(-20px) translateX(-8px);
+        transform: translateY(-20px) translateX(-8px) rotate(-5deg);
       }
       50% {
-        transform: translateY(-35px) translateX(8px);
+        transform: translateY(-35px) translateX(8px) rotate(5deg);
       }
       75% {
-        transform: translateY(-20px) translateX(-8px);
+        transform: translateY(-20px) translateX(-8px) rotate(-5deg);
       }
     }
 
@@ -202,45 +346,98 @@
       gap: 8px;
       flex-wrap: wrap;
     }
+
+    header h1 {
+      animation: slideInRight 0.8s ease-out;
+    }
+
+    header p {
+      animation: slideInLeft 0.8s ease-out 0.1s both;
+    }
+
+    .nav-tab:nth-child(1) {
+      animation: popIn 0.6s ease-out 0.1s both;
+    }
+
+    .nav-tab:nth-child(2) {
+      animation: popIn 0.6s ease-out 0.2s both;
+    }
+
+    .nav-tab:nth-child(3) {
+      animation: popIn 0.6s ease-out 0.3s both;
+    }
+
+    .nav-tab:nth-child(4) {
+      animation: popIn 0.6s ease-out 0.4s both;
+    }
+
+    .item-card {
+      animation: fadeIn 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    .item-card:nth-child(1) { animation-delay: 0.1s; }
+    .item-card:nth-child(2) { animation-delay: 0.2s; }
+    .item-card:nth-child(3) { animation-delay: 0.3s; }
+    .item-card:nth-child(4) { animation-delay: 0.4s; }
+    .item-card:nth-child(5) { animation-delay: 0.5s; }
+    .item-card:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(227, 106, 106, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(227, 106, 106, 0);
+      }
+    }
+
+    .gradient-primary {
+      animation: pulse-glow 3s infinite;
+    }
   </style>
   <style>body { box-sizing: border-box; }</style>
  </head>
  <body class="h-full bg-center" style="background-color: #FFFBF1;">
   <div class="app-wrapper h-full w-full flex flex-col overflow-auto relative">
    <div class="fixed inset-0 -z-10 overflow-hidden" style="background-color: #FFFBF1;">
-    <svg class="absolute top-10 right-20 w-32 h-32 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M30,20 Q35,15 40,20 L45,50 Q40,55 35,50 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M50,10 Q55,5 60,10 L65,55 Q60,60 55,55 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M70,15 Q75,10 80,15 L85,52 Q80,57 75,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" />
+    <!-- الورود الزخرفية -->
+    <svg class="absolute top-10 right-20 w-32 h-32 opacity-20 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <!-- الورد الرئيسي --> <circle cx="50" cy="45" r="8" fill="#D4A5A5" opacity="0.7" /> <ellipse cx="45" cy="35" rx="6" ry="8" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="55" cy="35" rx="6" ry="8" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="40" cy="42" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="60" cy="42" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="48" cy="52" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="52" cy="52" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <!-- الأوراق --> <path d="M50 55 Q45 65 40 70" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 55 Q55 65 60 70" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <ellipse cx="42" cy="68" rx="3" ry="5" fill="#5a7c4a" opacity="0.5" transform="rotate(-30 42 68)" /> <ellipse cx="58" cy="68" rx="3" ry="5" fill="#5a7c4a" opacity="0.5" transform="rotate(30 58 68)" />
     </svg>
-    <svg class="absolute bottom-20 left-32 w-40 h-40 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M25,30 Q30,25 35,30 L40,60 Q35,65 30,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M50,20 Q55,15 60,20 L65,65 Q60,70 55,65 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M75,35 Q80,30 85,35 L88,58 Q83,63 78,58 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" />
+    <svg class="absolute bottom-20 left-32 w-40 h-40 opacity-25 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <circle cx="50" cy="40" r="10" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="42" cy="28" rx="7" ry="10" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="58" cy="28" rx="7" ry="10" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="38" cy="40" rx="6" ry="8" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="62" cy="40" rx="6" ry="8" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="45" cy="50" rx="5" ry="7" fill="#D4A5A5" opacity="0.55" /> <ellipse cx="55" cy="50" rx="5" ry="7" fill="#D4A5A5" opacity="0.55" /> <path d="M50 52 Q45 62 40 68" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <path d="M50 52 Q55 62 60 68" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <ellipse cx="40" cy="66" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(-25 40 66)" /> <ellipse cx="60" cy="66" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(25 60 66)" />
     </svg>
-    <svg class="absolute top-1/2 right-10 w-28 h-28 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M35,25 Q40,20 45,25 L48,55 Q43,60 38,55 Z" fill="#FFF2D0" stroke="#E36A6A" stroke-width="1" /> <path d="M60,18 Q65,13 70,18 L72,60 Q67,65 62,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
+    <svg class="absolute top-1/2 right-10 w-28 h-28 opacity-18 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <circle cx="50" cy="42" r="7" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="45" cy="32" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="55" cy="32" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="42" cy="42" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <ellipse cx="58" cy="42" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <path d="M50 50 Q45 58 40 63" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" /> <path d="M50 50 Q55 58 60 63" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" />
     </svg>
-    <svg class="absolute top-20 left-16 w-36 h-36 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M28,18 Q33,12 38,18 L42,52 Q38,58 33,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M52,12 Q57,6 62,12 L68,58 Q62,64 57,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M72,20 Q77,15 82,20 L86,55 Q81,60 76,55 Z" fill="#FFB2B2" stroke="#E36A6A" stroke-width="1" />
+    <svg class="absolute top-20 left-16 w-36 h-36 opacity-22 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <circle cx="50" cy="45" r="9" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="44" cy="34" rx="6" ry="9" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="56" cy="34" rx="6" ry="9" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="39" cy="45" rx="5" ry="7" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="61" cy="45" rx="5" ry="7" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="46" cy="55" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="54" cy="55" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <path d="M50 58 Q45 68 40 74" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 58 Q55 68 60 74" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <ellipse cx="41" cy="72" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(-30 41 72)" /> <ellipse cx="59" cy="72" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(30 59 72)" />
     </svg>
-    <svg class="absolute bottom-32 right-40 w-44 h-44 opacity-4 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M26,32 Q31,27 36,32 L40,62 Q36,68 31,62 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" /> <path d="M48,22 Q53,17 58,22 L62,68 Q58,74 53,68 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M70,28 Q75,23 80,28 L84,60 Q80,66 75,60 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
+    <svg class="absolute bottom-32 right-40 w-44 h-44 opacity-20 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <circle cx="50" cy="42" r="11" fill="#D4A5A5" opacity="0.7" /> <ellipse cx="42" cy="28" rx="8" ry="11" fill="#ECC5C5" opacity="0.65" /> <ellipse cx="58" cy="28" rx="8" ry="11" fill="#ECC5C5" opacity="0.65" /> <ellipse cx="37" cy="42" rx="7" ry="9" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="63" cy="42" rx="7" ry="9" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="44" cy="54" rx="6" ry="8" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="56" cy="54" rx="6" ry="8" fill="#ECC5C5" opacity="0.55" /> <path d="M50 56 Q45 66 40 72" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <path d="M50 56 Q55 66 60 72" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <ellipse cx="40" cy="70" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(-25 40 70)" /> <ellipse cx="60" cy="70" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(25 60 70)" />
     </svg>
-    <svg class="absolute top-1/3 left-1/4 w-32 h-32 opacity-3 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M32,24 Q37,19 42,24 L46,54 Q42,60 37,54 Z" fill="#FFB2B2" stroke="#E36A6A" stroke-width="1" /> <path d="M54,14 Q59,9 64,14 L68,60 Q64,66 59,60 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" />
+    <svg class="absolute top-1/3 left-1/4 w-32 h-32 opacity-15 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <circle cx="50" cy="43" r="8" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="45" cy="32" rx="6" ry="8" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="55" cy="32" rx="6" ry="8" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="41" cy="43" rx="5" ry="7" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="59" cy="43" rx="5" ry="7" fill="#E0B5B5" opacity="0.6" /> <path d="M50 51 Q45 60 40 66" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 51 Q55 60 60 66" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" />
     </svg>
-    <svg class="absolute top-32 right-1/4 w-28 h-28 opacity-5 animate-slow-float" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M34,20 Q39,15 44,20 L48,52 Q44,58 39,52 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M60,16 Q65,11 70,16 L74,58 Q70,64 65,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" />
+    <svg class="absolute top-32 right-1/4 w-28 h-28 opacity-19 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <circle cx="50" cy="44" r="7" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="46" cy="34" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="54" cy="34" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="43" cy="44" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <ellipse cx="57" cy="44" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <ellipse cx="48" cy="53" rx="3" ry="5" fill="#ECC5C5" opacity="0.5" /> <ellipse cx="52" cy="53" rx="3" ry="5" fill="#ECC5C5" opacity="0.5" /> <path d="M50 52 Q46 59 42 64" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" /> <path d="M50 52 Q54 59 58 64" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" />
     </svg>
-    <svg class="absolute bottom-10 left-1/3 w-40 h-40 opacity-4 animate-slow-float-delay" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <path d="M24,28 Q29,23 34,28 L38,58 Q34,64 29,58 Z" fill="#E36A6A" stroke="#E36A6A" stroke-width="1" /> <path d="M46,18 Q51,13 56,18 L60,64 Q56,70 51,64 Z" fill="#FFF2D0" stroke="#FFF2D0" stroke-width="1" /> <path d="M68,26 Q73,21 78,26 L82,56 Q78,62 73,56 Z" fill="#FFB2B2" stroke="#FFB2B2" stroke-width="1" />
-    </svg>
+    <svg class="absolute bottom-10 left-1/3 w-40 h-40 opacity-23 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+     <circle cx="50" cy="43" r="10" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="43" cy="30" rx="7" ry="10" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="57" cy="30" rx="7" ry="10" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="38" cy="43" rx="6" ry="8" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="62" cy="43" rx="6" ry="8" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="45" cy="53" rx="5" ry="7" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="55" cy="53" rx="5" ry="7" fill="#ECC5C5" opacity="0.55" /> <path d="M50 55 Q45 65 40 71" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 55 Q55 65 60 71" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <ellipse cx="40" cy="69" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(-28 40 69)" /> <ellipse cx="60" cy="69" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(28 60 69)" />
+    </svg> @keyframes rose-bloom { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(5deg); } } 
+    <style>
+      .rose-decoration {
+        animation: rose-bloom 6s ease-in-out infinite !important;
+      }
+    </style>
    </div>
    <header class="gradient-primary text-white sticky top-0 z-50 shadow-lg">
     <div class="max-w-7xl mx-auto px-6 py-6">
      <div class="flex items-center justify-between mb-6">
-      <div class="flex items-center gap-4"><img src="https://kommodo.ai/i/7aazkH1dYINUrMZHzGFh" alt="شعار المدرسة" class="w-24 h-24 rounded-full shadow-lg border-4 border-white/30 object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='#E36A6A'; this.alt='شعار المدرسة';">
-       <div>
-        <h1 class="text-4xl font-bold">ثانوية خولة بنت الصامت</h1>
-        <p class="text-blue-100 mt-1">منذ عام 1436</p>
-       </div>
+      <div>
+       <h1 class="text-4xl font-bold">ثانوية خولة بنت الصامت</h1>
+       <p class="text-blue-100 mt-1">منذ عام 1436</p>
       </div><button id="toggleAuth" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition text-sm font-semibold flex items-center gap-2"> <i data-lucide="lock" style="width: 18px; height: 18px;"></i> <span id="authStatus">دخول المسؤولين</span> </button>
      </div>
      <div class="flex gap-8 overflow-x-auto pb-4"><button class="nav-tab active section-btn" data-section="about"> <span class="font-semibold">عن المدرسة</span> </button> <button class="nav-tab section-btn" data-section="activities"> <span class="font-semibold">الأنشطة</span> </button> <button class="nav-tab section-btn" data-section="broadcasts"> <span class="font-semibold">الإذاعات</span> </button> <button class="nav-tab section-btn" data-section="teams"> <span class="font-semibold">أقسام كوادر خولة</span> </button>
@@ -759,5 +956,5 @@
 
     lucide.createIcons();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f3086afa35cf91d',t:'MTc3NzMyMTIwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f30a31b2132f91d',t:'MTc3NzMyMjM3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
