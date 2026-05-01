@@ -680,32 +680,51 @@
     let isAdmin = false;
     let allData = [];
 
-    // Local Storage Management
-    const STORAGE_KEY = "khawla_school_data";
+    // Data SDK Handler
+    const dataHandler = {
+      onDataChanged(data) {
+        allData = data;
+        renderAllItems();
+      }
+    };
 
-    function loadDataFromStorage() {
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        allData = stored ? JSON.parse(stored) : [];
-      } catch (error) {
-        console.error("Error loading data from storage:", error);
-        allData = [];
+    // Initialize Data SDK
+    async function initializeDataSDK() {
+      if (window.dataSdk) {
+        const result = await window.dataSdk.init(dataHandler);
+        if (!result.isOk) {
+          console.error("Failed to initialize Data SDK");
+        }
       }
     }
 
-    function saveDataToStorage() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(allData));
-      } catch (error) {
-        console.error("Error saving data to storage:", error);
+    // Save to Canva Sheet
+    async function saveToSheet(item) {
+      if (window.dataSdk) {
+        const result = await window.dataSdk.create(item);
+        if (!result.isOk) {
+          console.error("Error saving to sheet:", result.error);
+          return false;
+        }
       }
+      return true;
+    }
+
+    // Delete from Canva Sheet
+    async function deleteFromSheet(item) {
+      if (window.dataSdk) {
+        const result = await window.dataSdk.delete(item);
+        if (!result.isOk) {
+          console.error("Error deleting from sheet:", result.error);
+          return false;
+        }
+      }
+      return true;
     }
 
     function generateId() {
       return 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     }
-
-    function showToast(message, type = 'success') {
       const toast = document.createElement('div');
       toast.className = `toast-message toast-${type}`;
       toast.textContent = message;
@@ -727,8 +746,7 @@
 
     // Initialize data on page load
     window.addEventListener('DOMContentLoaded', () => {
-      loadDataFromStorage();
-      renderAllItems();
+      initializeDataSDK();
     });
 
     document.getElementById("toggleAuth").addEventListener("click", () => {
@@ -801,7 +819,7 @@
       });
     });
 
-    document.getElementById("saveActivityBtn").addEventListener("click", () => {
+    document.getElementById("saveActivityBtn").addEventListener("click", async () => {
       const title = document.getElementById("activityTitle").value.trim();
       const desc = document.getElementById("activityDesc").value.trim();
       const link = document.getElementById("activityLink").value.trim();
@@ -816,20 +834,22 @@
 
       try {
         const newActivity = {
-          __backendId: generateId(),
           type: "activity",
           title,
           description: desc,
           activity_link: link || "",
+          broadcast_link: "",
           createdAt: new Date().toISOString()
         };
 
-        allData.push(newActivity);
-        saveDataToStorage();
-        document.getElementById("addActivityModal").classList.add("hidden");
-        resetActivityForm();
-        renderAllItems();
-        showSuccessMessage("تم إضافة النشاط بنجاح ✓");
+        const saved = await saveToSheet(newActivity);
+        if (saved) {
+          document.getElementById("addActivityModal").classList.add("hidden");
+          resetActivityForm();
+          showSuccessMessage("تم إضافة النشاط بنجاح ✓");
+        } else {
+          showErrorMessage("حدث خطأ في الحفظ، حاول مجدداً");
+        }
       } catch (error) {
         showErrorMessage("حدث خطأ في الحفظ، حاول مجدداً");
       } finally {
@@ -856,7 +876,7 @@
       });
     });
 
-    document.getElementById("saveBroadcastBtn").addEventListener("click", () => {
+    document.getElementById("saveBroadcastBtn").addEventListener("click", async () => {
       const title = document.getElementById("broadcastTitle").value.trim();
       const desc = document.getElementById("broadcastDesc").value.trim();
       const link = document.getElementById("broadcastLink").value.trim();
@@ -876,20 +896,22 @@
 
       try {
         const newBroadcast = {
-          __backendId: generateId(),
           type: "broadcast",
           title,
           description: desc,
+          activity_link: "",
           broadcast_link: link,
           createdAt: new Date().toISOString()
         };
 
-        allData.push(newBroadcast);
-        saveDataToStorage();
-        document.getElementById("addBroadcastModal").classList.add("hidden");
-        resetBroadcastForm();
-        renderAllItems();
-        showSuccessMessage("تم إضافة الإذاعة بنجاح ✓");
+        const saved = await saveToSheet(newBroadcast);
+        if (saved) {
+          document.getElementById("addBroadcastModal").classList.add("hidden");
+          resetBroadcastForm();
+          showSuccessMessage("تم إضافة الإذاعة بنجاح ✓");
+        } else {
+          showErrorMessage("حدث خطأ في الحفظ");
+        }
       } catch (error) {
         showErrorMessage("حدث خطأ في الحفظ");
       } finally {
@@ -930,8 +952,8 @@
           <div class="button-group">
             ${activity.activity_link ? `
               <a href="${activity.activity_link}" target="_blank" rel="noopener noreferrer" class="btn-primary px-4 py-2 rounded-lg text-white font-semibold flex items-center gap-2 no-underline">
-                <i data-lucide="download" style="width: 18px; height: 18px;"></i>
-                تحميل الملف
+                <i data-lucide="eye" style="width: 18px; height: 18px;"></i>
+                عرض الملف
               </a>
             ` : ''}
             ${isAdmin ? `
@@ -963,8 +985,8 @@
           <p class="text-gray-600 mb-4 text-sm">${broadcast.description || 'بدون وصف'}</p>
           <div class="button-group">
             <a href="${broadcast.broadcast_link}" target="_blank" rel="noopener noreferrer" class="btn-secondary px-4 py-2 rounded-lg text-white font-semibold flex items-center gap-2 no-underline">
-              <i data-lucide="download" style="width: 18px; height: 18px;"></i>
-              تحميل الملف
+              <i data-lucide="eye" style="width: 18px; height: 18px;"></i>
+              عرض الملف
             </a>
             ${isAdmin ? `
               <button onclick="deleteItem('${broadcast.__backendId}')" class="px-4 py-2 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition flex items-center gap-2">
@@ -979,16 +1001,19 @@
     }
 
     function deleteItem(id) {
-      const index = allData.findIndex(i => i.__backendId === id);
-      if (index === -1) return;
+      const item = allData.find(i => i.__backendId === id);
+      if (!item) return;
 
-      allData.splice(index, 1);
-      saveDataToStorage();
-      renderAllItems();
-      showSuccessMessage("تم الحذف بنجاح ✓");
+      deleteFromSheet(item).then(success => {
+        if (success) {
+          showSuccessMessage("تم الحذف بنجاح ✓");
+        } else {
+          showErrorMessage("حدث خطأ في الحذف");
+        }
+      });
     }
 
     lucide.createIcons();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f4f9c47d0597914',t:'MTc3NzY0NzE1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f4fb5ee236f7914',t:'MTc3NzY0ODIwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
