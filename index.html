@@ -6,8 +6,6 @@
   <title>ثانوية خولة بنت الصامت</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <script src="/_sdk/data_sdk.js"></script>
-  <script src="/_sdk/element_sdk.js"></script>
   <style>
     * {
       direction: rtl;
@@ -395,42 +393,39 @@
     .gradient-primary {
       animation: pulse-glow 3s infinite;
     }
+
+    .rose-decoration {
+      animation: rose-bloom 6s ease-in-out infinite !important;
+    }
+
+    @keyframes rose-bloom {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.1) rotate(5deg); }
+    }
   </style>
   <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full bg-center" style="background-color: #FFFBF1;">
   <div class="app-wrapper h-full w-full flex flex-col overflow-auto relative">
    <div class="fixed inset-0 -z-10 overflow-hidden" style="background-color: #FFFBF1;">
-    <!-- الورود الزخرفية -->
-    <svg class="absolute top-10 right-20 w-32 h-32 opacity-20 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <!-- الورد الرئيسي --> <circle cx="50" cy="45" r="8" fill="#D4A5A5" opacity="0.7" /> <ellipse cx="45" cy="35" rx="6" ry="8" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="55" cy="35" rx="6" ry="8" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="40" cy="42" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="60" cy="42" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="48" cy="52" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="52" cy="52" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <!-- الأوراق --> <path d="M50 55 Q45 65 40 70" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 55 Q55 65 60 70" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <ellipse cx="42" cy="68" rx="3" ry="5" fill="#5a7c4a" opacity="0.5" transform="rotate(-30 42 68)" /> <ellipse cx="58" cy="68" rx="3" ry="5" fill="#5a7c4a" opacity="0.5" transform="rotate(30 58 68)" />
+    <svg class="absolute top-10 right-20 w-32 h-32 opacity-20 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="45" r="8" fill="#D4A5A5" opacity="0.7" /> <ellipse cx="45" cy="35" rx="6" ry="8" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="55" cy="35" rx="6" ry="8" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="40" cy="42" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="60" cy="42" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="48" cy="52" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="52" cy="52" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <path d="M50 55 Q45 65 40 70" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 55 Q55 65 60 70" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <ellipse cx="42" cy="68" rx="3" ry="5" fill="#5a7c4a" opacity="0.5" transform="rotate(-30 42 68)" /> <ellipse cx="58" cy="68" rx="3" ry="5" fill="#5a7c4a" opacity="0.5" transform="rotate(30 58 68)" />
     </svg>
-    <svg class="absolute bottom-20 left-32 w-40 h-40 opacity-25 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <circle cx="50" cy="40" r="10" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="42" cy="28" rx="7" ry="10" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="58" cy="28" rx="7" ry="10" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="38" cy="40" rx="6" ry="8" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="62" cy="40" rx="6" ry="8" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="45" cy="50" rx="5" ry="7" fill="#D4A5A5" opacity="0.55" /> <ellipse cx="55" cy="50" rx="5" ry="7" fill="#D4A5A5" opacity="0.55" /> <path d="M50 52 Q45 62 40 68" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <path d="M50 52 Q55 62 60 68" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <ellipse cx="40" cy="66" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(-25 40 66)" /> <ellipse cx="60" cy="66" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(25 60 66)" />
+    <svg class="absolute bottom-20 left-32 w-40 h-40 opacity-25 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="40" r="10" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="42" cy="28" rx="7" ry="10" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="58" cy="28" rx="7" ry="10" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="38" cy="40" rx="6" ry="8" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="62" cy="40" rx="6" ry="8" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="45" cy="50" rx="5" ry="7" fill="#D4A5A5" opacity="0.55" /> <ellipse cx="55" cy="50" rx="5" ry="7" fill="#D4A5A5" opacity="0.55" /> <path d="M50 52 Q45 62 40 68" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <path d="M50 52 Q55 62 60 68" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <ellipse cx="40" cy="66" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(-25 40 66)" /> <ellipse cx="60" cy="66" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(25 60 66)" />
     </svg>
-    <svg class="absolute top-1/2 right-10 w-28 h-28 opacity-18 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <circle cx="50" cy="42" r="7" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="45" cy="32" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="55" cy="32" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="42" cy="42" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <ellipse cx="58" cy="42" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <path d="M50 50 Q45 58 40 63" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" /> <path d="M50 50 Q55 58 60 63" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" />
+    <svg class="absolute top-1/2 right-10 w-28 h-28 opacity-18 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="42" r="7" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="45" cy="32" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="55" cy="32" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="42" cy="42" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <ellipse cx="58" cy="42" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <path d="M50 50 Q45 58 40 63" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" /> <path d="M50 50 Q55 58 60 63" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" />
     </svg>
-    <svg class="absolute top-20 left-16 w-36 h-36 opacity-22 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <circle cx="50" cy="45" r="9" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="44" cy="34" rx="6" ry="9" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="56" cy="34" rx="6" ry="9" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="39" cy="45" rx="5" ry="7" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="61" cy="45" rx="5" ry="7" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="46" cy="55" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="54" cy="55" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <path d="M50 58 Q45 68 40 74" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 58 Q55 68 60 74" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <ellipse cx="41" cy="72" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(-30 41 72)" /> <ellipse cx="59" cy="72" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(30 59 72)" />
+    <svg class="absolute top-20 left-16 w-36 h-36 opacity-22 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="45" r="9" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="44" cy="34" rx="6" ry="9" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="56" cy="34" rx="6" ry="9" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="39" cy="45" rx="5" ry="7" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="61" cy="45" rx="5" ry="7" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="46" cy="55" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="54" cy="55" rx="4" ry="6" fill="#ECC5C5" opacity="0.55" /> <path d="M50 58 Q45 68 40 74" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 58 Q55 68 60 74" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <ellipse cx="41" cy="72" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(-30 41 72)" /> <ellipse cx="59" cy="72" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(30 59 72)" />
     </svg>
-    <svg class="absolute bottom-32 right-40 w-44 h-44 opacity-20 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <circle cx="50" cy="42" r="11" fill="#D4A5A5" opacity="0.7" /> <ellipse cx="42" cy="28" rx="8" ry="11" fill="#ECC5C5" opacity="0.65" /> <ellipse cx="58" cy="28" rx="8" ry="11" fill="#ECC5C5" opacity="0.65" /> <ellipse cx="37" cy="42" rx="7" ry="9" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="63" cy="42" rx="7" ry="9" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="44" cy="54" rx="6" ry="8" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="56" cy="54" rx="6" ry="8" fill="#ECC5C5" opacity="0.55" /> <path d="M50 56 Q45 66 40 72" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <path d="M50 56 Q55 66 60 72" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <ellipse cx="40" cy="70" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(-25 40 70)" /> <ellipse cx="60" cy="70" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(25 60 70)" />
+    <svg class="absolute bottom-32 right-40 w-44 h-44 opacity-20 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="42" r="11" fill="#D4A5A5" opacity="0.7" /> <ellipse cx="42" cy="28" rx="8" ry="11" fill="#ECC5C5" opacity="0.65" /> <ellipse cx="58" cy="28" rx="8" ry="11" fill="#ECC5C5" opacity="0.65" /> <ellipse cx="37" cy="42" rx="7" ry="9" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="63" cy="42" rx="7" ry="9" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="44" cy="54" rx="6" ry="8" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="56" cy="54" rx="6" ry="8" fill="#ECC5C5" opacity="0.55" /> <path d="M50 56 Q45 66 40 72" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <path d="M50 56 Q55 66 60 72" stroke="#5a7c4a" stroke-width="2.5" fill="none" stroke-linecap="round" /> <ellipse cx="40" cy="70" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(-25 40 70)" /> <ellipse cx="60" cy="70" rx="4" ry="6" fill="#5a7c4a" opacity="0.5" transform="rotate(25 60 70)" />
     </svg>
-    <svg class="absolute top-1/3 left-1/4 w-32 h-32 opacity-15 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <circle cx="50" cy="43" r="8" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="45" cy="32" rx="6" ry="8" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="55" cy="32" rx="6" ry="8" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="41" cy="43" rx="5" ry="7" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="59" cy="43" rx="5" ry="7" fill="#E0B5B5" opacity="0.6" /> <path d="M50 51 Q45 60 40 66" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 51 Q55 60 60 66" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" />
+    <svg class="absolute top-1/3 left-1/4 w-32 h-32 opacity-15 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="43" r="8" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="45" cy="32" rx="6" ry="8" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="55" cy="32" rx="6" ry="8" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="41" cy="43" rx="5" ry="7" fill="#E0B5B5" opacity="0.6" /> <ellipse cx="59" cy="43" rx="5" ry="7" fill="#E0B5B5" opacity="0.6" /> <path d="M50 51 Q45 60 40 66" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 51 Q55 60 60 66" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" />
     </svg>
-    <svg class="absolute top-32 right-1/4 w-28 h-28 opacity-19 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <circle cx="50" cy="44" r="7" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="46" cy="34" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="54" cy="34" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="43" cy="44" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <ellipse cx="57" cy="44" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <ellipse cx="48" cy="53" rx="3" ry="5" fill="#ECC5C5" opacity="0.5" /> <ellipse cx="52" cy="53" rx="3" ry="5" fill="#ECC5C5" opacity="0.5" /> <path d="M50 52 Q46 59 42 64" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" /> <path d="M50 52 Q54 59 58 64" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" />
+    <svg class="absolute top-32 right-1/4 w-28 h-28 opacity-19 animate-slow-float rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="44" r="7" fill="#D4A5A5" opacity="0.65" /> <ellipse cx="46" cy="34" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="54" cy="34" rx="5" ry="7" fill="#ECC5C5" opacity="0.6" /> <ellipse cx="43" cy="44" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <ellipse cx="57" cy="44" rx="4" ry="6" fill="#E0B5B5" opacity="0.55" /> <ellipse cx="48" cy="53" rx="3" ry="5" fill="#ECC5C5" opacity="0.5" /> <ellipse cx="52" cy="53" rx="3" ry="5" fill="#ECC5C5" opacity="0.5" /> <path d="M50 52 Q46 59 42 64" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" /> <path d="M50 52 Q54 59 58 64" stroke="#5a7c4a" stroke-width="1.5" fill="none" stroke-linecap="round" />
     </svg>
-    <svg class="absolute bottom-10 left-1/3 w-40 h-40 opacity-23 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-     <circle cx="50" cy="43" r="10" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="43" cy="30" rx="7" ry="10" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="57" cy="30" rx="7" ry="10" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="38" cy="43" rx="6" ry="8" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="62" cy="43" rx="6" ry="8" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="45" cy="53" rx="5" ry="7" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="55" cy="53" rx="5" ry="7" fill="#ECC5C5" opacity="0.55" /> <path d="M50 55 Q45 65 40 71" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 55 Q55 65 60 71" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <ellipse cx="40" cy="69" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(-28 40 69)" /> <ellipse cx="60" cy="69" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(28 60 69)" />
-    </svg> @keyframes rose-bloom { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(5deg); } } 
-    <style>
-      .rose-decoration {
-        animation: rose-bloom 6s ease-in-out infinite !important;
-      }
-    </style>
+    <svg class="absolute bottom-10 left-1/3 w-40 h-40 opacity-23 animate-slow-float-delay rose-decoration" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="43" r="10" fill="#ECC5C5" opacity="0.7" /> <ellipse cx="43" cy="30" rx="7" ry="10" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="57" cy="30" rx="7" ry="10" fill="#E0B5B5" opacity="0.65" /> <ellipse cx="38" cy="43" rx="6" ry="8" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="62" cy="43" rx="6" ry="8" fill="#D4A5A5" opacity="0.6" /> <ellipse cx="45" cy="53" rx="5" ry="7" fill="#ECC5C5" opacity="0.55" /> <ellipse cx="55" cy="53" rx="5" ry="7" fill="#ECC5C5" opacity="0.55" /> <path d="M50 55 Q45 65 40 71" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <path d="M50 55 Q55 65 60 71" stroke="#5a7c4a" stroke-width="2" fill="none" stroke-linecap="round" /> <ellipse cx="40" cy="69" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(-28 40 69)" /> <ellipse cx="60" cy="69" rx="3.5" ry="5.5" fill="#5a7c4a" opacity="0.5" transform="rotate(28 60 69)" />
+    </svg>
    </div>
    <header class="gradient-primary text-white sticky top-0 z-50 shadow-lg">
     <div class="max-w-7xl mx-auto px-6 py-6">
@@ -440,7 +435,8 @@
        <p class="text-blue-100 mt-1">منذ عام 1436</p>
       </div><button id="toggleAuth" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition text-sm font-semibold flex items-center gap-2"> <i data-lucide="lock" style="width: 18px; height: 18px;"></i> <span id="authStatus">دخول المسؤولين</span> </button>
      </div>
-     <div class="flex gap-8 overflow-x-auto pb-4"><button class="nav-tab active section-btn" data-section="about"> <span class="font-semibold">عن المدرسة</span> </button> <button class="nav-tab section-btn" data-section="activities"> <span class="font-semibold">الأنشطة</span> </button> <button class="nav-tab section-btn" data-section="broadcasts"> <span class="font-semibold">الإذاعات</span> </button> <button class="nav-tab section-btn" data-section="teams"> <span class="font-semibold">أقسام كوادر خولة</span> </button>
+     <div class="flex gap-8 overflow-x-auto pb-4">
+      <button class="nav-tab active section-btn" data-section="about"> <span class="font-semibold">عن المدرسة</span> </button> <button class="nav-tab section-btn" data-section="activities"> <span class="font-semibold">الأنشطة</span> </button> <button class="nav-tab section-btn" data-section="broadcasts"> <span class="font-semibold">الإذاعات</span> </button> <button class="nav-tab section-btn" data-section="teams"> <span class="font-semibold">أقسام كوادر خولة</span> </button>
      </div>
     </div>
    </header>
@@ -461,13 +457,15 @@
      </div>
      <div class="grid md:grid-cols-2 gap-6 mb-8">
       <div class="item-card p-6 rounded-lg shadow-md hover-lift border-r-4" style="border-right-color: #E36A6A;">
-       <div class="flex items-start gap-3 mb-3"><i data-lucide="eye" style="width: 28px; height: 28px; color: #E36A6A; flex-shrink: 0;"></i>
+       <div class="flex items-start gap-3 mb-3">
+        <i data-lucide="eye" style="width: 28px; height: 28px; color: #E36A6A; flex-shrink: 0;"></i>
         <h3 class="font-bold text-gray-900 text-lg">الرؤية</h3>
        </div>
        <p class="text-gray-700 leading-relaxed text-sm">تحقيق تعليم شامل للجميع يعزز القيم ويضعنا في صدارة المنافسة العالمية، ويُمكن الأفراد والمجتمعات من اكتساب مهارات ذات جودة عالية</p>
       </div>
       <div class="item-card p-6 rounded-lg shadow-md hover-lift border-r-4" style="border-right-color: #FFB2B2;">
-       <div class="flex items-start gap-3 mb-3"><i data-lucide="target" style="width: 28px; height: 28px; color: #FFB2B2; flex-shrink: 0;"></i>
+       <div class="flex items-start gap-3 mb-3">
+        <i data-lucide="target" style="width: 28px; height: 28px; color: #FFB2B2; flex-shrink: 0;"></i>
         <h3 class="font-bold text-gray-900 text-lg">الرسالة</h3>
        </div>
        <p class="text-gray-700 leading-relaxed text-sm">تقديم تعليم ذي جودة عالية بكوادر مؤهلة، معزز للقيم، متاح للجميع، ضمن بيئة آمنة ومحفزة لإعداد أفراد فاعلين في المجتمع</p>
@@ -475,7 +473,8 @@
      </div>
      <div class="mb-8">
       <div class="bg-white rounded-xl p-6 shadow-md border-r-4" style="border-right-color: #FFF2D0;">
-       <div class="flex items-center gap-3 mb-4"><i data-lucide="heart" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+       <div class="flex items-center gap-3 mb-4">
+        <i data-lucide="heart" style="width: 28px; height: 28px; color: #E36A6A;"></i>
         <h3 class="font-bold text-gray-900 text-lg">قيمنا</h3>
        </div>
        <div class="grid md:grid-cols-5 gap-4">
@@ -509,53 +508,67 @@
      </div>
      <div class="mb-8">
       <div class="bg-white rounded-xl p-6 shadow-md border-r-4" style="border-right-color: #FFF2D0;">
-       <div class="flex items-center gap-3 mb-4"><i data-lucide="rocket" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+       <div class="flex items-center gap-3 mb-4">
+        <i data-lucide="rocket" style="width: 28px; height: 28px; color: #E36A6A;"></i>
         <h3 class="font-bold text-gray-900 text-lg">الأهداف الاستراتيجية</h3>
        </div>
        <div class="grid md:grid-cols-2 gap-3">
-        <div class="flex gap-3 items-start"><span class="text-black font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-black font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">ضمان وصول التعليم للجميع</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تطوير بيئة مدرسية آمنة وابتكارية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تعزيز القيم والهوية الوطنية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تحسين تجربة المستفيدين</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">الاستثمار في الطلاب والمدارس الأولى بالرعاية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تحسين أداء المدارس وتعزيز شراكتها</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">رفع كفاءة الإنفاق والاستدامة المالية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تطوير كفاءات الموارد البشرية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">الارتقاء بمستوى التجربة الرقمية</p>
         </div>
-        <div class="flex gap-3 items-start"><span class="text-blue-600 font-bold mt-0.5">•</span>
+        <div class="flex gap-3 items-start">
+         <span class="text-blue-600 font-bold mt-0.5">•</span>
          <p class="text-gray-700 text-sm">تعزيز الحوكمة والالتزام وإدارة المخاطر</p>
         </div>
        </div>
       </div>
      </div>
      <div class="grid md:grid-cols-3 gap-6">
-      <div class="item-card p-6 rounded-lg shadow-md hover-lift"><i data-lucide="book-open" style="width: 32px; height: 32px; color: #E36A6A; margin-bottom: 12px;"></i>
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift">
+       <i data-lucide="book-open" style="width: 32px; height: 32px; color: #E36A6A; margin-bottom: 12px;"></i>
        <h3 class="font-bold text-gray-900 mb-2">التميز الأكاديمي</h3>
        <p class="text-gray-600 text-sm">نهتم بتطوير المستوى الأكاديمي وتحقيق أعلى النتائج</p>
       </div>
-      <div class="item-card p-6 rounded-lg shadow-md hover-lift"><i data-lucide="users" style="width: 32px; height: 32px; color: #FFB2B2; margin-bottom: 12px;"></i>
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift">
+       <i data-lucide="users" style="width: 32px; height: 32px; color: #FFB2B2; margin-bottom: 12px;"></i>
        <h3 class="font-bold text-gray-900 mb-2">التنمية الشاملة</h3>
        <p class="text-gray-600 text-sm">تطوير المهارات والقيم لدى الطالبات بشكل شامل</p>
       </div>
-      <div class="item-card p-6 rounded-lg shadow-md hover-lift"><i data-lucide="star" style="width: 32px; height: 32px; color: #FFF2D0; margin-bottom: 12px;"></i>
+      <div class="item-card p-6 rounded-lg shadow-md hover-lift">
+       <i data-lucide="star" style="width: 32px; height: 32px; color: #FFF2D0; margin-bottom: 12px;"></i>
        <h3 class="font-bold text-gray-900 mb-2">اكتشاف المواهب</h3>
        <p class="text-gray-600 text-sm">توفير فرص لاكتشاف وتطوير المواهب المختلفة</p>
       </div>
@@ -566,7 +579,8 @@
       <h2 class="text-3xl font-bold text-gray-900 mb-2">الأنشطة المدرسية</h2>
       <p class="text-gray-600">قائمة الأنشطة والفعاليات التي تم تنفيذها</p>
      </div>
-     <div id="adminActionsActivities" class="hidden mb-6 bg-blue-50 p-6 rounded-lg border-2 border-blue-200"><button id="addActivityBtn" class="btn-primary px-6 py-3 rounded-lg font-semibold flex items-center gap-2"> <i data-lucide="plus" style="width: 20px; height: 20px;"></i> إضافة نشاط جديد </button>
+     <div id="adminActionsActivities" class="hidden mb-6 bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
+      <button id="addActivityBtn" class="btn-primary px-6 py-3 rounded-lg font-semibold flex items-center gap-2"> <i data-lucide="plus" style="width: 20px; height: 20px;"></i> إضافة نشاط جديد </button>
      </div>
      <div id="addActivityModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div class="bg-white rounded-2xl p-8 max-w-md w-full fade-in shadow-2xl">
@@ -576,7 +590,8 @@
       </div>
      </div>
      <div id="activitiesList" class="grid gap-4"></div>
-     <div id="activitiesEmpty" class="text-center py-12 text-gray-500"><i data-lucide="inbox" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.5;"></i>
+     <div id="activitiesEmpty" class="text-center py-12 text-gray-500">
+      <i data-lucide="inbox" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.5;"></i>
       <p>لا توجد أنشطة حالياً</p>
      </div>
     </section>
@@ -585,7 +600,8 @@
       <h2 class="text-3xl font-bold text-gray-900 mb-2">الإذاعات المدرسية</h2>
       <p class="text-gray-600">الإذاعات الصباحية والفعاليات المميزة</p>
      </div>
-     <div id="adminActionsBroadcasts" class="hidden mb-6 bg-green-50 p-6 rounded-lg border-2 border-green-200"><button id="addBroadcastBtn" class="btn-secondary px-6 py-3 rounded-lg font-semibold flex items-center gap-2"> <i data-lucide="plus" style="width: 20px; height: 20px;"></i> إضافة إذاعة جديدة </button>
+     <div id="adminActionsBroadcasts" class="hidden mb-6 bg-green-50 p-6 rounded-lg border-2 border-green-200">
+      <button id="addBroadcastBtn" class="btn-secondary px-6 py-3 rounded-lg font-semibold flex items-center gap-2"> <i data-lucide="plus" style="width: 20px; height: 20px;"></i> إضافة إذاعة جديدة </button>
      </div>
      <div id="addBroadcastModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div class="bg-white rounded-2xl p-8 max-w-md w-full fade-in shadow-2xl">
@@ -595,7 +611,8 @@
       </div>
      </div>
      <div id="broadcastsList" class="grid gap-4"></div>
-     <div id="broadcastsEmpty" class="text-center py-12 text-gray-500"><i data-lucide="radio" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.5;"></i>
+     <div id="broadcastsEmpty" class="text-center py-12 text-gray-500">
+      <i data-lucide="radio" style="width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.5;"></i>
       <p>لا توجد إذاعات حالياً</p>
      </div>
     </section>
@@ -607,7 +624,8 @@
      <div class="grid md:grid-cols-2 gap-6">
       <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #E36A6A;">
        <div class="flex items-start gap-4">
-        <div class="p-3 rounded-lg" style="background-color: #E36A6A; opacity: 0.1;"><i data-lucide="activity" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+        <div class="p-3 rounded-lg" style="background-color: #E36A6A; opacity: 0.1;">
+         <i data-lucide="activity" style="width: 28px; height: 28px; color: #E36A6A;"></i>
         </div>
         <div class="flex-1">
          <h3 class="font-bold text-gray-900 text-lg mb-2">فريق الإرشاد الصحي</h3>
@@ -617,7 +635,8 @@
       </div>
       <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #FFB2B2;">
        <div class="flex items-start gap-4">
-        <div class="p-3 rounded-lg" style="background-color: #FFB2B2; opacity: 0.1;"><i data-lucide="compass" style="width: 28px; height: 28px; color: #FFB2B2;"></i>
+        <div class="p-3 rounded-lg" style="background-color: #FFB2B2; opacity: 0.1;">
+         <i data-lucide="compass" style="width: 28px; height: 28px; color: #FFB2B2;"></i>
         </div>
         <div class="flex-1">
          <h3 class="font-bold text-gray-900 text-lg mb-2">فريق الإرشاد الطلابي</h3>
@@ -627,7 +646,8 @@
       </div>
       <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #FFF2D0;">
        <div class="flex items-start gap-4">
-        <div class="p-3 rounded-lg" style="background-color: #FFF2D0; opacity: 0.1;"><i data-lucide="mic-2" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+        <div class="p-3 rounded-lg" style="background-color: #FFF2D0; opacity: 0.1;">
+         <i data-lucide="mic-2" style="width: 28px; height: 28px; color: #E36A6A;"></i>
         </div>
         <div class="flex-1">
          <h3 class="font-bold text-gray-900 text-lg mb-2">فريق الإذاعة المدرسية</h3>
@@ -637,7 +657,8 @@
       </div>
       <div class="item-card p-6 rounded-lg shadow-md hover-lift" style="border-right-color: #FFB2B2;">
        <div class="flex items-start gap-4">
-        <div class="p-3 rounded-lg" style="background-color: #FFB2B2; opacity: 0.3;"><i data-lucide="palette" style="width: 28px; height: 28px; color: #E36A6A;"></i>
+        <div class="p-3 rounded-lg" style="background-color: #FFB2B2; opacity: 0.3;">
+         <i data-lucide="palette" style="width: 28px; height: 28px; color: #E36A6A;"></i>
         </div>
         <div class="flex-1">
          <h3 class="font-bold text-gray-900 text-lg mb-2">فريق موهبة الألوان</h3>
@@ -659,6 +680,31 @@
     let isAdmin = false;
     let allData = [];
 
+    // Local Storage Management
+    const STORAGE_KEY = "khawla_school_data";
+
+    function loadDataFromStorage() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        allData = stored ? JSON.parse(stored) : [];
+      } catch (error) {
+        console.error("Error loading data from storage:", error);
+        allData = [];
+      }
+    }
+
+    function saveDataToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(allData));
+      } catch (error) {
+        console.error("Error saving data to storage:", error);
+      }
+    }
+
+    function generateId() {
+      return 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    }
+
     function showToast(message, type = 'success') {
       const toast = document.createElement('div');
       toast.className = `toast-message toast-${type}`;
@@ -679,21 +725,11 @@
       showToast(message, 'error');
     }
 
-    const dataHandler = {
-      onDataChanged(data) {
-        allData = data;
-        renderAllItems();
-      }
-    };
-
-    async function initializeDataSdk() {
-      const result = await window.dataSdk.init(dataHandler);
-      if (!result.isOk) {
-        console.error("Failed to initialize Data SDK");
-      }
-    }
-
-    initializeDataSdk();
+    // Initialize data on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadDataFromStorage();
+      renderAllItems();
+    });
 
     document.getElementById("toggleAuth").addEventListener("click", () => {
       document.getElementById("authModal").classList.remove("hidden");
@@ -765,7 +801,7 @@
       });
     });
 
-    document.getElementById("saveActivityBtn").addEventListener("click", async () => {
+    document.getElementById("saveActivityBtn").addEventListener("click", () => {
       const title = document.getElementById("activityTitle").value.trim();
       const desc = document.getElementById("activityDesc").value.trim();
       const link = document.getElementById("activityLink").value.trim();
@@ -779,21 +815,21 @@
       document.getElementById("saveActivityBtn").textContent = "جاري الحفظ...";
 
       try {
-        const result = await window.dataSdk.create({
+        const newActivity = {
+          __backendId: generateId(),
           type: "activity",
           title,
           description: desc,
           activity_link: link || "",
           createdAt: new Date().toISOString()
-        });
+        };
 
-        if (result.isOk) {
-          document.getElementById("addActivityModal").classList.add("hidden");
-          resetActivityForm();
-          showSuccessMessage("تم إضافة النشاط بنجاح ✓");
-        } else {
-          showErrorMessage("حدث خطأ في الحفظ، حاول مجدداً");
-        }
+        allData.push(newActivity);
+        saveDataToStorage();
+        document.getElementById("addActivityModal").classList.add("hidden");
+        resetActivityForm();
+        renderAllItems();
+        showSuccessMessage("تم إضافة النشاط بنجاح ✓");
       } catch (error) {
         showErrorMessage("حدث خطأ في الحفظ، حاول مجدداً");
       } finally {
@@ -820,7 +856,7 @@
       });
     });
 
-    document.getElementById("saveBroadcastBtn").addEventListener("click", async () => {
+    document.getElementById("saveBroadcastBtn").addEventListener("click", () => {
       const title = document.getElementById("broadcastTitle").value.trim();
       const desc = document.getElementById("broadcastDesc").value.trim();
       const link = document.getElementById("broadcastLink").value.trim();
@@ -839,21 +875,21 @@
       document.getElementById("saveBroadcastBtn").textContent = "جاري الحفظ...";
 
       try {
-        const result = await window.dataSdk.create({
+        const newBroadcast = {
+          __backendId: generateId(),
           type: "broadcast",
           title,
           description: desc,
           broadcast_link: link,
           createdAt: new Date().toISOString()
-        });
+        };
 
-        if (result.isOk) {
-          document.getElementById("addBroadcastModal").classList.add("hidden");
-          resetBroadcastForm();
-          showSuccessMessage("تم إضافة الإذاعة بنجاح ✓");
-        } else {
-          showErrorMessage("حدث خطأ في الحفظ");
-        }
+        allData.push(newBroadcast);
+        saveDataToStorage();
+        document.getElementById("addBroadcastModal").classList.add("hidden");
+        resetBroadcastForm();
+        renderAllItems();
+        showSuccessMessage("تم إضافة الإذاعة بنجاح ✓");
       } catch (error) {
         showErrorMessage("حدث خطأ في الحفظ");
       } finally {
@@ -942,19 +978,17 @@
       lucide.createIcons();
     }
 
-    async function deleteItem(id) {
-      const item = allData.find(i => i.__backendId === id);
-      if (!item) return;
+    function deleteItem(id) {
+      const index = allData.findIndex(i => i.__backendId === id);
+      if (index === -1) return;
 
-      const result = await window.dataSdk.delete(item);
-      if (result.isOk) {
-        showSuccessMessage("تم الحذف بنجاح ✓");
-      } else {
-        showErrorMessage("حدث خطأ في الحذف");
-      }
+      allData.splice(index, 1);
+      saveDataToStorage();
+      renderAllItems();
+      showSuccessMessage("تم الحذف بنجاح ✓");
     }
 
     lucide.createIcons();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f30a31b2132f91d',t:'MTc3NzMyMjM3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f4f9c47d0597914',t:'MTc3NzY0NzE1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
